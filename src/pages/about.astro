@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const values = [
+  { n: '01', title: 'Excellence', body: 'Every detail matters. From the initial concept to the finishing touches, we hold ourselves to the highest standards of architectural quality and craftsmanship.' },
+  { n: '02', title: 'Integrity', body: 'Transparent dealing, honest timelines, and a steadfast commitment to every promise we make to our clients, partners, and communities.' },
+  { n: '03', title: 'Vision', body: 'We anticipate where communities are heading — and build the spaces that will define them for decades to come.' },
+  { n: '04', title: 'Community', body: 'We develop not just buildings, but living ecosystems — places where people connect, grow, and truly belong.' },
+];
+---
+
+<Layout title="About" description="Learn about AMX Developers — our mission, vision, and the values that drive premium real estate development in Buenos Aires.">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="reveal-mask"><span class="section-label reveal-line">About AMX Developers</span></span>
+      <h1>
+        <span class="reveal-mask"><span class="reveal-line">Our</span></span>
+        <span class="reveal-mask"><span class="reveal-line">Story</span></span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <section class="mission">
+    <div class="container">
+      <div class="m-inner">
+        <div class="m-col m-col--label">
+          <span class="reveal-mask"><span class="section-label reveal-line">Mission</span></span>
+        </div>
+        <div class="m-col m-col--body">
+          <h2 class="m-h2">
+            <span class="reveal-mask"><span class="reveal-line">Building the Future.</span></span>
+            <span class="reveal-mask"><span class="reveal-line">Living the Present.</span></span>
+          </h2>
+          <div class="m-copy">
+            <p class="reveal-fade">
+              AMX Developers was founded with a singular ambition: to redefine what premium real estate means in Argentina. We believe that architecture has the power to transform cities, shape culture, and improve the quality of everyday life.
+            </p>
+            <p class="reveal-fade">
+              Every project we undertake is guided by a relentless pursuit of quality. From the initial concept to final delivery, we demand excellence at every stage — from our team, our partners, and ourselves.
+            </p>
+            <p class="reveal-fade">
+              We are not just developers. We are urban visionaries, crafting the landmarks that future generations will call home.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-rule"></div>
+
+  <!-- APPROACH -->
+  <section class="approach">
+    <div class="container">
+      <div class="ap-inner">
+        <div class="ap-label">
+          <span class="reveal-mask"><span class="section-label reveal-line">Our Approach</span></span>
+        </div>
+        <div class="ap-body">
+          <blockquote class="ap-quote reveal-fade">
+            "We build spaces worthy of the people who will fill them. Every beam, every facade, every common area is a decision about how life can be lived better."
+          </blockquote>
+          <cite class="ap-cite reveal-fade">— AMX Developers</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-rule"></div>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="container">
+      <div class="v-header">
+        <span class="reveal-mask"><span class="section-label reveal-line">Core Values</span></span>
+        <h2 class="v-h2">
+          <span class="reveal-mask"><span class="reveal-line">What drives us</span></span>
+        </h2>
+      </div>
+      <div class="v-grid reveal-stagger">
+        {values.map(v => (
+          <div class="v-card">
+            <span class="vc-num">{v.n}</span>
+            <h3 class="vc-title">{v.title}</h3>
+            <p class="vc-body">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-rule"></div>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="container">
+      <div class="ac-inner">
+        <div class="ac-left">
+          <span class="reveal-mask"><span class="section-label reveal-line">Explore</span></span>
+          <h2 class="ac-h2">
+            <span class="reveal-mask"><span class="reveal-line">See what</span></span>
+            <span class="reveal-mask"><span class="reveal-line">we've built</span></span>
+          </h2>
+        </div>
+        <div class="ac-right reveal-fade">
+          <p>Our portfolio spans luxury towers, waterfront residences, mixed-use developments, and curated gated communities across Buenos Aires.</p>
+          <div class="ac-btns">
+            <a href="/portfolio" class="btn btn-white">View Portfolio</a>
+            <a href="/contact" class="btn btn-outline">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* MISSION */
+  .mission {
+    padding: clamp(6rem, 12vw, 10rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .m-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .m-h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 2.5rem;
+  }
+  .m-copy p {
+    font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+    line-height: 1.85;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  /* APPROACH / QUOTE */
+  .approach {
+    padding: clamp(6rem, 10vw, 9rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .ap-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .ap-quote {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .ap-cite {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* VALUES */
+  .values {
+    padding: clamp(6rem, 12vw, 10rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .v-header { margin-bottom: 4rem; }
+  .v-h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 0.75rem;
+  }
+  .v-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2.5rem;
+  }
+  .v-card { padding-right: 1rem; }
+  .vc-num {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+  .vc-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .vc-body {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  /* CTA */
+  .about-cta {
+    padding: clamp(6rem, 12vw, 10rem) 0;
+  }
+  .ac-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .ac-h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 0.75rem;
+  }
+  .ac-right p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .ac-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  /* RULE */
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .m-inner, .ap-inner, .ac-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .v-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .v-grid { grid-template-columns: 1fr; }
+  }
+</style>

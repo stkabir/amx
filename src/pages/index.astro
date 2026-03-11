@@ -1,17 +1,638 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const projects = [
+  {
+    slug: 'torre-belgrano',
+    name: 'Torre Belgrano',
+    location: 'Belgrano, Buenos Aires',
+    type: 'High-Rise Residential',
+    category: 'development',
+    bg: 'linear-gradient(160deg, #060d18 0%, #0a1e38 60%, #0d2850 100%)',
+    accent: '#0d2850',
+  },
+  {
+    slug: 'palermo-uno',
+    name: 'Palermo Uno',
+    location: 'Palermo, Buenos Aires',
+    type: 'Mixed-Use Development',
+    category: 'development',
+    bg: 'linear-gradient(160deg, #07101c 0%, #0c1c30 60%, #112440 100%)',
+    accent: '#112440',
+  },
+  {
+    slug: 'puerto-madero-iii',
+    name: 'Puerto Madero III',
+    location: 'Puerto Madero, Buenos Aires',
+    type: 'Luxury Waterfront',
+    category: 'development',
+    bg: 'linear-gradient(160deg, #050c16 0%, #081824 60%, #0b2236 100%)',
+    accent: '#0b2236',
+  },
+  {
+    slug: 'nordelta-reserve',
+    name: 'Nordelta Reserve',
+    location: 'Tigre, Buenos Aires',
+    type: 'Gated Community',
+    category: 'asset',
+    bg: 'linear-gradient(160deg, #080f1a 0%, #0d1a28 60%, #102030 100%)',
+    accent: '#102030',
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home" description="AMX Developers — Premium real estate development in Buenos Aires, Argentina.">
+
+  <!-- ══════════════════════════════════════════════════════ HERO -->
+  <section class="hero" id="hero">
+    <div id="hero-particles" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-label-wrap h-mask">
+        <span class="section-label h-line">Premium Real Estate Development</span>
+      </div>
+      <h1 class="hero-h1" id="hero-heading">
+        <span class="h-mask">
+          <span class="h-line">Building</span>
+        </span>
+        <span class="h-mask">
+          <span class="h-line">Premium</span>
+        </span>
+        <span class="h-mask">
+          <span class="h-line">Communities</span>
+        </span>
+      </h1>
+      <div class="hero-copy h-fade" id="hero-copy">
+        <p>A Buenos Aires–based real estate development firm committed to creating distinguished residential and commercial projects that shape the communities of tomorrow.</p>
+      </div>
+      <div class="hero-cta h-fade">
+        <a href="/portfolio" class="btn btn-white">Explore Portfolio</a>
+        <a href="/contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hs-line"></div>
+      <span class="hs-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="as-inner">
+        <div class="as-label">
+          <span class="reveal-mask"><span class="section-label reveal-line">About AMX</span></span>
+        </div>
+        <div class="as-body">
+          <div class="as-text">
+            <p class="as-p reveal-fade">
+              AMX Developers is a premier real estate company dedicated to creating exceptional living spaces across Buenos Aires. We combine architectural ambition with meticulous execution to deliver developments that stand as landmarks in their communities.
+            </p>
+            <p class="as-p reveal-fade">
+              Each project is a commitment — to the people who will live in it, the neighbourhoods that surround it, and the vision of a city built with purpose and permanence. Our portfolio spans luxury residential towers, mixed-use developments, and curated gated communities.
+            </p>
+            <a href="/about" class="as-link reveal-fade">
+              <span>Learn more about us</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ PORTFOLIO -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="container">
+
+      <div class="ps-header">
+        <div class="psh-left">
+          <span class="reveal-mask"><span class="section-label reveal-line">Our Work</span></span>
+          <h2 class="ps-title">
+            <span class="reveal-mask"><span class="reveal-line">Explore our</span></span>
+            <span class="reveal-mask"><span class="reveal-line">portfolio</span></span>
+          </h2>
+        </div>
+        <div class="psh-tabs reveal-fade" role="tablist" aria-label="Portfolio categories">
+          <button class="ps-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="ps-tab" data-filter="development" role="tab" aria-selected="false">Development</button>
+          <button class="ps-tab" data-filter="asset" role="tab" aria-selected="false">Asset Management</button>
+        </div>
+      </div>
+
+      <div class="ps-grid reveal-stagger" id="ps-grid">
+        {projects.map(proj => (
+          <article class="ps-card" data-category={proj.category}>
+            <a href={`/portfolio#${proj.slug}`} class="psc-link">
+              <div class="psc-visual" style={`background: ${proj.bg}`}>
+                <div class="psc-grid-lines"></div>
+                <div class="psc-overlay"></div>
+                <!-- Building art -->
+                <div class="psc-building" aria-hidden="true">
+                  <div class="pb-col pb-tall" style={`background: ${proj.accent}80`}></div>
+                  <div class="pb-col pb-mid" style={`background: ${proj.accent}99`}></div>
+                  <div class="pb-col pb-short" style={`background: ${proj.accent}70`}></div>
+                  <div class="pb-col pb-tall2" style={`background: ${proj.accent}88`}></div>
+                </div>
+                <!-- Plus icon on hover -->
+                <div class="psc-plus" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="psc-info">
+                <p class="psc-type">{proj.type}</p>
+                <p class="psc-name">{proj.name}</p>
+                <p class="psc-loc">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  {proj.location}
+                </p>
+                <span class="psc-more">Learn More →</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <div class="ps-footer reveal-fade">
+        <a href="/portfolio" class="btn btn-outline">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ CONTACT STRIP -->
+  <section class="contact-strip" id="contact-strip">
+    <div class="container">
+      <div class="cs-inner">
+        <div class="cs-left">
+          <span class="reveal-mask"><span class="section-label reveal-line">Get in Touch</span></span>
+          <h2 class="cs-title">
+            <span class="reveal-mask"><span class="reveal-line">Let's build</span></span>
+            <span class="reveal-mask"><span class="reveal-line">together</span></span>
+          </h2>
+        </div>
+        <div class="cs-right reveal-fade">
+          <div class="cs-items">
+            <a href="mailto:adm@amxdevelopers.com" class="cs-item">
+              <span class="csi-label">Email</span>
+              <span class="csi-val">adm@amxdevelopers.com</span>
+            </a>
+            <a href="https://wa.me/5491133839797" class="cs-item">
+              <span class="csi-label">WhatsApp</span>
+              <span class="csi-val">+54 9 11 3383 9797</span>
+            </a>
+            <a href="https://www.instagram.com/amxdevelopers" target="_blank" rel="noopener" class="cs-item">
+              <span class="csi-label">Instagram</span>
+              <span class="csi-val">@amxdevelopers</span>
+            </a>
+          </div>
+          <a href="/contact" class="btn btn-white" style="margin-top:2rem;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ═══ HERO ══════════════════════════════════════════════════════════════ */
+  .hero {
+    position: relative;
+    height: 100dvh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--dark);
+  }
+  #hero-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  #hero-particles canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    padding: var(--pad);
+    max-width: var(--max);
+    width: 100%;
+    margin: 0 auto;
+    padding-top: var(--nav-h);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-h1 {
+    font-size: clamp(2.5rem, min(9vw, 15vh), 9rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.92;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  /* Hero-only reveal helpers (avoids conflict with global .reveal-line handler) */
+  .h-mask { overflow: hidden; display: block; }
+  .hero-label-wrap { margin-bottom: 0.5rem; }
+  .hero-copy {
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-copy p {
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    line-height: 1.8;
+    color: var(--gray);
+    font-weight: 300;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* Scroll cue */
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    right: var(--pad);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+  }
+  .hs-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray);
+    writing-mode: vertical-rl;
+  }
+  .hs-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    animation: lineFlow 2.2s ease infinite;
+  }
+  @keyframes lineFlow {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    51%  { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0.3; }
+  }
+
+  /* ═══ ABOUT ════════════════════════════════════════════════════════════ */
+  .about-section {
+    padding: clamp(6rem, 12vw, 11rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .as-inner {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .as-text { max-width: 680px; }
+  .as-p {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.85;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .as-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 0.5rem;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .as-link:hover { color: #fff; gap: 0.75rem; }
+
+  /* ═══ PORTFOLIO ════════════════════════════════════════════════════════ */
+  .portfolio-section {
+    padding: clamp(6rem, 12vw, 11rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .ps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .ps-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 0.75rem;
+  }
+  .psh-tabs {
+    display: flex;
+    gap: 0.25rem;
+    align-self: flex-end;
+    flex-wrap: wrap;
+  }
+  .ps-tab {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--border);
+    color: var(--gray);
+    background: transparent;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.22s ease;
+  }
+  .ps-tab:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+  .ps-tab.active {
+    background: #fff;
+    color: var(--dark);
+    border-color: #fff;
+  }
+
+  /* Grid */
+  .ps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    margin-bottom: 3rem;
+  }
+  .ps-card { overflow: hidden; }
+  .ps-card.hidden { display: none; }
+  .psc-link {
+    display: block;
+    text-decoration: none;
+    position: relative;
+  }
+
+  /* Visual */
+  .psc-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .psc-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0, transparent 1px, transparent 32px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0, transparent 1px, transparent 32px);
+  }
+  .psc-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,17,27,0.8) 0%, transparent 60%);
+    transition: opacity 0.4s ease;
+  }
+  .psc-link:hover .psc-overlay { opacity: 0.5; }
+  .psc-building {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 70%;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    transition: transform 0.6s ease;
+  }
+  .psc-link:hover .psc-building { transform: translateX(-50%) scale(1.04); }
+  .pb-col { border-radius: 1px 1px 0 0; flex: 1; }
+  .pb-tall { height: 95%; }
+  .pb-mid { height: 68%; }
+  .pb-short { height: 48%; }
+  .pb-tall2 { height: 82%; }
+
+  /* Plus icon */
+  .psc-plus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 5;
+  }
+  .psc-link:hover .psc-plus { transform: translate(-50%, -50%) scale(1); }
+
+  /* Info */
+  .psc-info {
+    padding: 1.25rem 1.5rem 1.75rem;
+    background: var(--dark);
+  }
+  .psc-type {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.35rem;
+  }
+  .psc-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s;
+  }
+  .psc-link:hover .psc-name { opacity: 0.7; }
+  .psc-loc {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+  }
+  .psc-more {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    transition: color 0.2s;
+  }
+  .psc-link:hover .psc-more { color: #fff; }
+
+  .ps-footer { text-align: center; }
+
+  /* ═══ CONTACT STRIP ════════════════════════════════════════════════════ */
+  .contact-strip {
+    padding: clamp(6rem, 12vw, 11rem) 0;
+    background: var(--blue);
+  }
+  .cs-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .cs-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 0.75rem;
+  }
+  .cs-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .cs-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    gap: 1rem;
+    transition: opacity 0.2s;
+  }
+  .cs-item:hover { opacity: 0.7; }
+  .csi-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .csi-val {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.03em;
+  }
+
+  /* ═══ RESPONSIVE ════════════════════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .as-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .ps-grid { grid-template-columns: 1fr; }
+    .cs-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .ps-header { flex-direction: column; align-items: flex-start; }
+  }
+  @media (min-width: 600px) and (max-width: 900px) {
+    .ps-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  // ─── HERO PARTICLES (p5.js) ──────────────────────────────────────────────
+  new p5(function (p) {
+    const N = 70;
+    let pts = [];
+
+    class Pt {
+      constructor() { this.init(); }
+      init() {
+        this.x = p.random(p.width);
+        this.y = p.random(p.height);
+        this.vx = p.random(-0.35, 0.35);
+        this.vy = p.random(-0.55, -0.1);
+        this.r = p.random(1.5, 3.5);
+        this.a = p.random(60, 160);
+        this.spd = p.random(0.05, 0.1);
+      }
+      update() {
+        const dx = p.mouseX - this.x;
+        const dy = p.mouseY - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 180 && dist > 0) {
+          this.vy -= (1 - dist / 180) * this.spd * 2.5;
+          this.vx += (dx / dist) * this.spd * 0.4;
+        }
+        this.vx *= 0.99; this.vy *= 0.99;
+        this.vy += 0.012; // gravity
+        this.x += this.vx; this.y += this.vy;
+        if (this.y < -6) this.y = p.height + 6;
+        if (this.y > p.height + 6) this.y = -6;
+        if (this.x < -6) this.x = p.width + 6;
+        if (this.x > p.width + 6) this.x = -6;
+      }
+      draw() {
+        p.noStroke();
+        p.fill(255, 255, 255, this.a);
+        p.ellipse(this.x, this.y, this.r, this.r);
+      }
+    }
+
+    p.setup = function () {
+      p.createCanvas(p.windowWidth, p.windowHeight).parent('hero-particles');
+      for (let i = 0; i < N; i++) pts.push(new Pt());
+    };
+    p.draw = function () {
+      p.clear();
+      pts.forEach(pt => { pt.update(); pt.draw(); });
+    };
+    p.windowResized = function () {
+      p.resizeCanvas(p.windowWidth, p.windowHeight);
+    };
+  });
+
+  // ─── HERO LINE REVEALS (after page intro, delay) ──────────────────────────
+  gsap.fromTo('.hero-h1 .h-line',
+    { y: '110%' },
+    { y: '0%', duration: 1.1, stagger: 0.12, ease: 'power3.out', delay: 1.2 }
+  );
+  gsap.fromTo('.hero-label-wrap .h-line',
+    { y: '110%' },
+    { y: '0%', duration: 0.9, ease: 'power3.out', delay: 1.0 }
+  );
+  gsap.fromTo('.h-fade',
+    { y: 24, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out', delay: 1.5, stagger: 0.2 }
+  );
+  gsap.fromTo('.hero-scroll',
+    { opacity: 0 },
+    { opacity: 1, duration: 0.8, delay: 2.0 }
+  );
+
+  // ─── PORTFOLIO FILTER ────────────────────────────────────────────────────
+  const tabs = document.querySelectorAll('.ps-tab');
+  const cards = document.querySelectorAll('.ps-card');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const filter = tab.dataset.filter;
+
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
+</script>
