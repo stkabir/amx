@@ -1,88 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const projects = [
-  {
-    id: 'torre-belgrano',
-    name: 'Torre Belgrano',
-    location: 'Belgrano, Buenos Aires',
-    type: 'High-Rise Residential',
-    category: 'development',
-    status: 'Completed',
-    detail: '34 Floors · 280 Units',
-    desc: 'A landmark residential tower redefining the Belgrano skyline. Premium apartments with panoramic city views, designed for modern urban living at its finest.',
-    bg: 'linear-gradient(160deg, #060d18 0%, #0a1e38 60%, #0d2850 100%)',
-    accent: '#0d2850',
-  },
-  {
-    id: 'palermo-uno',
-    name: 'Palermo Uno',
-    location: 'Palermo, Buenos Aires',
-    type: 'Mixed-Use Development',
-    category: 'development',
-    status: 'In Development',
-    detail: '22 Floors · Retail + Residential',
-    desc: 'A mixed-use development at the heart of Palermo, blending ground-floor retail with premium residential levels and a rooftop amenity deck.',
-    bg: 'linear-gradient(160deg, #07101c 0%, #0c1c30 60%, #112440 100%)',
-    accent: '#112440',
-  },
-  {
-    id: 'puerto-madero-iii',
-    name: 'Puerto Madero III',
-    location: 'Puerto Madero, Buenos Aires',
-    type: 'Luxury Waterfront',
-    category: 'development',
-    status: 'Completed',
-    detail: '48 Floors · 160 Units',
-    desc: 'Our most iconic waterfront development. Ultra-luxury residences in Buenos Aires\' most prestigious address, with unobstructed Río de la Plata views.',
-    bg: 'linear-gradient(160deg, #050c16 0%, #081824 60%, #0b2236 100%)',
-    accent: '#0b2236',
-  },
-  {
-    id: 'nordelta-reserve',
-    name: 'Nordelta Reserve',
-    location: 'Tigre, Buenos Aires',
-    type: 'Gated Community',
-    category: 'asset',
-    status: 'In Development',
-    detail: '280 Homes · 45 ha',
-    desc: 'An exclusive gated community set within 45 hectares of curated landscape in Tigre, where design, nature and privacy converge.',
-    bg: 'linear-gradient(160deg, #080f1a 0%, #0d1a28 60%, #102030 100%)',
-    accent: '#102030',
-  },
-  {
-    id: 'palermo-soho-lofts',
-    name: 'Palermo Soho Lofts',
-    location: 'Palermo Soho, Buenos Aires',
-    type: 'Boutique Residences',
-    category: 'asset',
-    status: 'Completed',
-    detail: '8 Floors · 64 Lofts',
-    desc: 'Intimate loft-style residences in the creative heart of Palermo Soho, with exposed concrete, double-height ceilings and artisan finishes.',
-    bg: 'linear-gradient(160deg, #0a0c14 0%, #10182a 60%, #1a2840 100%)',
-    accent: '#1a2840',
-  },
-  {
-    id: 'recoleta-premier',
-    name: 'Recoleta Premier',
-    location: 'Recoleta, Buenos Aires',
-    type: 'Heritage Conversion',
-    category: 'asset',
-    status: 'Ongoing',
-    detail: '12 Floors · Heritage Building',
-    desc: 'A meticulous restoration of a heritage Recoleta building, converting upper floors into premium managed residences while preserving its Belle Époque facade.',
-    bg: 'linear-gradient(160deg, #0a0810 0%, #181020 60%, #201835 100%)',
-    accent: '#201835',
-  },
-];
+import { projects } from '../data/projects.js';
 ---
 
-<Layout title="Portfolio" description="Explore AMX Developers' portfolio of premium residential and mixed-use developments across Buenos Aires.">
+<Layout title="Portfolio" description="Explorá el portfolio de AMX Developers — desarrollos residenciales y proyectos de asset management premium en Buenos Aires.">
 
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
-      <span class="reveal-mask"><span class="section-label reveal-line">Our Work</span></span>
+      <span class="reveal-mask"><span class="section-label reveal-line">Nuestro Trabajo</span></span>
       <h1>
         <span class="reveal-mask"><span class="reveal-line">Portfolio</span></span>
       </h1>
@@ -94,33 +20,31 @@ const projects = [
     <div class="container">
 
       <div class="pf-controls">
-        <div class="pfc-tabs reveal-fade" role="tablist" aria-label="Project categories">
-          <button class="pfc-tab active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
-          <button class="pfc-tab" data-filter="development" role="tab" aria-selected="false">Development</button>
+        <div class="pfc-tabs reveal-fade" role="tablist" aria-label="Categorías de proyectos">
+          <button class="pfc-tab active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+          <button class="pfc-tab" data-filter="development" role="tab" aria-selected="false">Desarrollo</button>
           <button class="pfc-tab" data-filter="asset" role="tab" aria-selected="false">Asset Management</button>
         </div>
       </div>
 
       <!-- Featured row (first two, large) -->
       <div class="pf-featured" id="pf-featured">
-        {projects.slice(0, 2).map(proj => (
-          <article class="pff-card" data-category={proj.category} id={proj.id}>
-            <div class="pffc-visual" style={`background: ${proj.bg}`}>
-              <div class="pffc-grid-lines" aria-hidden="true"></div>
-              <div class="pffc-building" aria-hidden="true">
-                <div class="pfb-col pfb-tall" style={`background: ${proj.accent}80`}></div>
-                <div class="pfb-col pfb-mid" style={`background: ${proj.accent}99`}></div>
-                <div class="pfb-col pfb-short" style={`background: ${proj.accent}70`}></div>
-                <div class="pfb-col pfb-tall2" style={`background: ${proj.accent}88`}></div>
-                <div class="pfb-col pfb-xs" style={`background: ${proj.accent}60`}></div>
-              </div>
+        {projects.slice(0, 2).map((proj, i) => (
+          <a href={`/proyectos/${proj.slug}`} class="pff-card" data-category={proj.category}>
+            <div class="pffc-visual">
+              <img
+                src={proj.image}
+                alt={proj.name}
+                class="pffc-img"
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
               <div class="pffc-overlay"></div>
-              <div class="pffc-plus" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
-                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              <span class="pffc-status">{proj.status}</span>
+              <div class="pffc-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
-              <span class="pffc-status">{proj.status}</span>
             </div>
             <div class="pffc-info">
               <div class="pffc-meta">
@@ -133,30 +57,25 @@ const projects = [
                 {proj.location}
               </p>
               <p class="pffc-desc">{proj.desc}</p>
+              <span class="pffc-cta">Ver proyecto →</span>
             </div>
-          </article>
+          </a>
         ))}
       </div>
 
       <!-- Regular grid (rest) -->
       <div class="pf-grid reveal-stagger" id="pf-grid">
         {projects.slice(2).map(proj => (
-          <article class="pfg-card" data-category={proj.category} id={proj.id}>
-            <div class="pfgc-visual" style={`background: ${proj.bg}`}>
-              <div class="pfgc-grid-lines" aria-hidden="true"></div>
-              <div class="pfgc-building" aria-hidden="true">
-                <div class="pfb-col pfb-tall" style={`background: ${proj.accent}80`}></div>
-                <div class="pfb-col pfb-mid" style={`background: ${proj.accent}99`}></div>
-                <div class="pfb-col pfb-short" style={`background: ${proj.accent}70`}></div>
-                <div class="pfb-col pfb-tall2" style={`background: ${proj.accent}88`}></div>
-              </div>
+          <a href={`/proyectos/${proj.slug}`} class="pfg-card" data-category={proj.category}>
+            <div class="pfgc-visual">
+              <img src={proj.image} alt={proj.name} class="pfgc-img" loading="lazy" />
               <div class="pfgc-overlay"></div>
-              <div class="pfgc-plus" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
-                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              <span class="pfgc-status">{proj.status}</span>
+              <div class="pfgc-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
-              <span class="pfgc-status">{proj.status}</span>
             </div>
             <div class="pfgc-info">
               <p class="pfgc-type">{proj.type}</p>
@@ -167,7 +86,7 @@ const projects = [
               </p>
               <p class="pfgc-desc">{proj.desc}</p>
             </div>
-          </article>
+          </a>
         ))}
       </div>
 
@@ -179,14 +98,14 @@ const projects = [
     <div class="container">
       <div class="pfc-inner">
         <div class="pfci-left">
-          <span class="reveal-mask"><span class="section-label reveal-line">Interested?</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line">¿Interesado?</span></span>
           <h2 class="pfci-h2">
-            <span class="reveal-mask"><span class="reveal-line">Let's talk</span></span>
-            <span class="reveal-mask"><span class="reveal-line">about your project</span></span>
+            <span class="reveal-mask"><span class="reveal-line">Hablemos</span></span>
+            <span class="reveal-mask"><span class="reveal-line">de tu proyecto</span></span>
           </h2>
         </div>
         <div class="pfci-right reveal-fade">
-          <a href="/contact" class="btn btn-white">Contact Us</a>
+          <a href="/contact" class="btn btn-white">Contactanos</a>
         </div>
       </div>
     </div>
@@ -232,7 +151,11 @@ const projects = [
     gap: 1.5px;
     margin-bottom: 1.5px;
   }
-  .pff-card { cursor: default; }
+  .pff-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
   .pff-card.hidden { display: none; }
 
   .pffc-visual {
@@ -240,43 +163,21 @@ const projects = [
     aspect-ratio: 3/2;
     overflow: hidden;
   }
-  .pffc-grid-lines {
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0, transparent 1px, transparent 32px),
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0, transparent 1px, transparent 32px);
+  .pffc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
+  .pff-card:hover .pffc-img { transform: scale(1.05); }
+
   .pffc-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(13,17,27,0.85) 0%, transparent 55%);
+    background: linear-gradient(to top, rgba(13,17,27,0.75) 0%, rgba(13,17,27,0.15) 55%);
     transition: opacity 0.4s;
   }
-  .pff-card:hover .pffc-overlay { opacity: 0.5; }
-  .pffc-building {
-    position: absolute;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 65%; height: 72%;
-    display: flex; align-items: flex-end; gap: 3px;
-    transition: transform 0.5s ease;
-  }
-  .pff-card:hover .pffc-building { transform: translateX(-50%) scale(1.03); }
-  .pfb-col { border-radius: 1px 1px 0 0; flex: 1; }
-  .pfb-tall { height: 95%; } .pfb-mid { height: 68%; } .pfb-short { height: 48%; } .pfb-tall2 { height: 82%; } .pfb-xs { height: 36%; }
-
-  .pffc-plus {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 56px; height: 56px;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; z-index: 5;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .pff-card:hover .pffc-plus { transform: translate(-50%, -50%) scale(1); }
+  .pff-card:hover .pffc-overlay { opacity: 0.7; }
 
   .pffc-status {
     position: absolute; top: 1.25rem; left: 1.25rem;
@@ -284,7 +185,20 @@ const projects = [
     color: rgba(255,255,255,0.9);
     border: 1px solid rgba(255,255,255,0.3);
     padding: 0.3rem 0.75rem; backdrop-filter: blur(4px);
+    background: rgba(13,17,27,0.2);
   }
+
+  .pffc-arrow {
+    position: absolute; bottom: 1.25rem; right: 1.25rem;
+    width: 44px; height: 44px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; z-index: 5;
+    transform: scale(0);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .pff-card:hover .pffc-arrow { transform: scale(1); }
 
   .pffc-info {
     padding: 1.5rem 1.75rem 2rem;
@@ -297,12 +211,18 @@ const projects = [
     text-transform: uppercase; color: var(--gray);
     margin-bottom: 0.5rem;
   }
-  .pffc-name { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.4rem; }
+  .pffc-name { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.4rem; transition: opacity 0.2s; }
+  .pff-card:hover .pffc-name { opacity: 0.7; }
   .pffc-loc {
     display: flex; align-items: center; gap: 0.3rem;
     font-size: 0.78rem; color: var(--gray); margin-bottom: 0.9rem;
   }
-  .pffc-desc { font-size: 0.88rem; line-height: 1.7; color: var(--gray); font-weight: 300; max-width: 500px; }
+  .pffc-desc { font-size: 0.88rem; line-height: 1.7; color: var(--gray); font-weight: 300; max-width: 500px; margin-bottom: 1rem; }
+  .pffc-cta {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray); transition: color 0.2s;
+  }
+  .pff-card:hover .pffc-cta { color: #fff; }
 
   /* ── REGULAR GRID ─────────────────────────────── */
   .pf-grid {
@@ -310,45 +230,48 @@ const projects = [
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5px;
   }
+  .pfg-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
   .pfg-card.hidden { display: none; }
 
   .pfgc-visual {
     position: relative; aspect-ratio: 4/3; overflow: hidden;
   }
-  .pfgc-grid-lines {
-    position: absolute; inset: 0;
-    background-image:
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0, transparent 1px, transparent 28px),
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0, transparent 1px, transparent 28px);
+  .pfgc-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
+  .pfg-card:hover .pfgc-img { transform: scale(1.06); }
+
   .pfgc-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(13,17,27,0.85) 0%, transparent 55%);
+    background: linear-gradient(to top, rgba(13,17,27,0.78) 0%, rgba(13,17,27,0.1) 55%);
     transition: opacity 0.4s;
   }
-  .pfg-card:hover .pfgc-overlay { opacity: 0.5; }
-  .pfgc-building {
-    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 60%; height: 70%; display: flex; align-items: flex-end; gap: 3px;
-    transition: transform 0.5s;
-  }
-  .pfg-card:hover .pfgc-building { transform: translateX(-50%) scale(1.04); }
-  .pfgc-plus {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 46px; height: 46px;
-    border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    color: #fff; z-index: 5;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .pfg-card:hover .pfgc-plus { transform: translate(-50%, -50%) scale(1); }
+  .pfg-card:hover .pfgc-overlay { opacity: 0.6; }
+
   .pfgc-status {
     position: absolute; top: 1rem; left: 1rem;
     font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.25);
     padding: 0.25rem 0.65rem; backdrop-filter: blur(4px);
+    background: rgba(13,17,27,0.2);
   }
+  .pfgc-arrow {
+    position: absolute; bottom: 1rem; right: 1rem;
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; z-index: 5;
+    transform: scale(0);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .pfg-card:hover .pfgc-arrow { transform: scale(1); }
+
   .pfgc-info {
     padding: 1.25rem 1.5rem 1.75rem;
     background: var(--dark);
