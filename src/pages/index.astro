@@ -167,7 +167,7 @@ const projects = allProjects.slice(0, 4);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: var(--dark);
+    background: #F5F2EE;
   }
   #hero-particles {
     position: absolute;
@@ -239,7 +239,7 @@ const projects = allProjects.slice(0, 4);
   .hs-line {
     width: 1px;
     height: 60px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    background: linear-gradient(to bottom, rgba(13,17,27,0.4), transparent);
     animation: lineFlow 2.2s ease infinite;
   }
   @keyframes lineFlow {
@@ -280,7 +280,7 @@ const projects = allProjects.slice(0, 4);
     margin-top: 0.5rem;
     transition: color 0.2s, gap 0.2s;
   }
-  .as-link:hover { color: #fff; gap: 0.75rem; }
+  .as-link:hover { color: #0D111B; gap: 0.75rem; }
 
   /* ═══ PORTFOLIO ════════════════════════════════════════════════════════ */
   .portfolio-section {
@@ -322,11 +322,11 @@ const projects = allProjects.slice(0, 4);
     border-radius: 1px;
     transition: all 0.22s ease;
   }
-  .ps-tab:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+  .ps-tab:hover { color: #0D111B; border-color: rgba(0,0,0,0.3); }
   .ps-tab.active {
-    background: #fff;
-    color: var(--dark);
-    border-color: #fff;
+    background: var(--dark);
+    color: #fff;
+    border-color: var(--dark);
   }
 
   /* Grid */
@@ -386,7 +386,7 @@ const projects = allProjects.slice(0, 4);
   /* Info */
   .psc-info {
     padding: 1.25rem 1.5rem 1.75rem;
-    background: var(--dark);
+    background: #F5F2EE;
   }
   .psc-type {
     font-size: 0.65rem;
@@ -399,7 +399,7 @@ const projects = allProjects.slice(0, 4);
   .psc-name {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #fff;
+    color: #0D111B;
     margin-bottom: 0.35rem;
     letter-spacing: -0.01em;
     transition: opacity 0.2s;
@@ -421,7 +421,7 @@ const projects = allProjects.slice(0, 4);
     color: var(--gray);
     transition: color 0.2s;
   }
-  .psc-link:hover .psc-more { color: #fff; }
+  .psc-link:hover .psc-more { color: #0D111B; }
 
   .ps-footer { text-align: center; }
 
@@ -429,6 +429,9 @@ const projects = allProjects.slice(0, 4);
   .contact-strip {
     padding: clamp(6rem, 12vw, 11rem) 0;
     background: var(--blue);
+    color: #fff;
+    --border: rgba(255,255,255,0.15);
+    --gray: rgba(255,255,255,0.5);
   }
   .cs-inner {
     display: grid;
@@ -472,6 +475,10 @@ const projects = allProjects.slice(0, 4);
     color: #fff;
     letter-spacing: 0.03em;
   }
+
+  /* ═══ CONTACT STRIP: botón blanco sobre fondo azul ═════════════════════ */
+  .contact-strip .btn-white { background: #fff; color: var(--blue); border-color: #fff; }
+  .contact-strip .btn-white:hover { background: transparent; color: #fff; }
 
   /* ═══ RESPONSIVE ════════════════════════════════════════════════════════ */
   @media (max-width: 900px) {
@@ -521,7 +528,7 @@ const projects = allProjects.slice(0, 4);
       }
       draw() {
         p.noStroke();
-        p.fill(255, 255, 255, this.a);
+        p.fill(13, 17, 27, this.a);
         p.ellipse(this.x, this.y, this.r, this.r);
       }
     }

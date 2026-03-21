@@ -42,15 +42,8 @@ const navLinks = [
   <header id="site-header">
     <a href="/" class="site-logo" id="site-logo" aria-label="AMX Developers — Home">
       <svg class="logo-hex" viewBox="0 0 52 60" fill="none" width="32" height="37">
-        <defs>
-          <linearGradient id="lg-logo" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
-            <stop offset="50%" stop-color="#aabbcc" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#fff" stop-opacity="1"/>
-          </linearGradient>
-        </defs>
-        <polygon points="26,2 50,15 50,41 26,54 2,41 2,15" stroke="url(#lg-logo)" stroke-width="2" fill="none"/>
-        <polygon points="26,12 40,20 40,36 26,44 12,36 12,20" stroke="url(#lg-logo)" stroke-width="1" fill="none" opacity="0.5"/>
+        <polygon points="26,2 50,15 50,41 26,54 2,41 2,15" stroke="currentColor" stroke-width="2" fill="none"/>
+        <polygon points="26,12 40,20 40,36 26,44 12,36 12,20" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5"/>
       </svg>
       <div class="logo-wordmark">
         <span class="logo-amx">AMX</span>
@@ -375,8 +368,8 @@ html {
   font-family: 'Epilogue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0D111B;
-  color: #fff;
+  background: #F5F2EE;
+  color: #0D111B;
   scroll-behavior: smooth;
 }
 body { overflow-x: hidden; }
@@ -393,8 +386,8 @@ input, textarea { font: inherit; }
   --dark:  #0D111B;
   --blue:  #1E3653;
   --white: #ffffff;
-  --gray:  #b3b3b3;
-  --border: rgba(255,255,255,0.08);
+  --gray:  #666666;
+  --border: rgba(0,0,0,0.1);
   --pad: clamp(1.5rem, 5vw, 4rem);
   --max: 1280px;
   --ease-expo: cubic-bezier(0.87, 0, 0.13, 1);
@@ -429,7 +422,7 @@ input, textarea { font: inherit; }
   border-bottom: 1px solid transparent;
 }
 #site-header.is-scrolled {
-  background: rgba(13, 17, 27, 0.9);
+  background: rgba(245, 242, 238, 0.93);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom-color: var(--border);
@@ -455,7 +448,7 @@ input, textarea { font: inherit; }
   font-weight: 800;
   font-size: 1.4rem;
   letter-spacing: 0.06em;
-  color: #fff;
+  color: #0D111B;
 }
 .logo-dev {
   font-size: 0.5rem;
@@ -484,7 +477,7 @@ input, textarea { font: inherit; }
 .ml {
   display: block;
   height: 1.5px;
-  background: #fff;
+  background: #0D111B;
   transition: transform 0.4s var(--ease-expo), opacity 0.3s ease, width 0.3s ease;
   transform-origin: center;
 }
@@ -499,7 +492,7 @@ input, textarea { font: inherit; }
   position: fixed;
   inset: 0;
   z-index: 900;
-  background: var(--dark);
+  background: #F5F2EE;
   clip-path: inset(0 0 100% 0);
   pointer-events: none;
   display: flex;
@@ -530,7 +523,7 @@ input, textarea { font: inherit; }
   transition: color 0.2s;
   display: inline-block;
 }
-.nsl-link.is-active { color: #fff; }
+.nsl-link.is-active { color: #0D111B; }
 .nsl-label { display: inline-block; }
 
 /* Large links (bottom) */
@@ -562,6 +555,7 @@ input, textarea { font: inherit; }
   line-height: 1;
   transition: opacity 0.3s;
   display: block;
+  color: #0D111B;
 }
 .nll-item:hover .nll-text { opacity: 0.6; }
 .nll-img {
@@ -597,7 +591,7 @@ input, textarea { font: inherit; }
   transition: color 0.2s;
   letter-spacing: 0.04em;
 }
-.nob-contact a:hover { color: #fff; }
+.nob-contact a:hover { color: #0D111B; }
 .nob-social {
   display: flex;
   gap: 1.5rem;
@@ -609,12 +603,13 @@ input, textarea { font: inherit; }
   color: var(--gray);
   transition: color 0.2s;
 }
-.nob-social a:hover { color: #fff; }
+.nob-social a:hover { color: #0D111B; }
 
 /* ─── FOOTER ─────────────────────────────────────────────────────────────── */
 #site-footer {
-  background: var(--dark);
-  border-top: 1px solid var(--border);
+  background: #EDE9E3;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  color: #0D111B;
 }
 .footer-inner {
   max-width: var(--max);
@@ -647,7 +642,7 @@ input, textarea { font: inherit; }
   transition: color 0.2s;
   letter-spacing: 0.02em;
 }
-.ft-nav a:hover { color: #fff; }
+.ft-nav a:hover { color: #0D111B; }
 
 .ft-mailing .ft-sub {
   font-size: 0.83rem;
@@ -658,14 +653,14 @@ input, textarea { font: inherit; }
 }
 .mailing-form .mf-row {
   display: flex;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 .mailing-form input {
   flex: 1;
   background: transparent;
   border: none;
   outline: none;
-  color: #fff;
+  color: #0D111B;
   font-size: 0.88rem;
   padding: 0.6rem 0;
   letter-spacing: 0.03em;
@@ -676,7 +671,7 @@ input, textarea { font: inherit; }
   color: var(--gray);
   transition: color 0.2s;
 }
-.mailing-form button:hover { color: #fff; }
+.mailing-form button:hover { color: #0D111B; }
 .mf-success {
   display: none;
   font-size: 0.78rem;
@@ -697,7 +692,7 @@ input, textarea { font: inherit; }
   letter-spacing: 0.03em;
   transition: color 0.2s;
 }
-.ft-contact address a:hover { color: #fff; }
+.ft-contact address a:hover { color: #0D111B; }
 
 .footer-bottom {
   display: flex;
@@ -719,7 +714,7 @@ input, textarea { font: inherit; }
   color: var(--gray);
   transition: color 0.2s;
 }
-.fb-social a:hover { color: #fff; }
+.fb-social a:hover { color: #0D111B; }
 
 /* ─── SHARED UTILITY ─────────────────────────────────────────────────────── */
 .container {
@@ -775,21 +770,21 @@ input, textarea { font: inherit; }
   font-family: 'Epilogue', sans-serif;
 }
 .btn-white {
-  background: #fff;
-  color: var(--dark);
-  border: 1px solid #fff;
+  background: var(--dark);
+  color: #fff;
+  border: 1px solid var(--dark);
 }
 .btn-white:hover {
   background: transparent;
-  color: #fff;
+  color: var(--dark);
 }
 .btn-outline {
   background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--dark);
+  border: 1px solid rgba(0,0,0,0.25);
 }
 .btn-outline:hover {
-  border-color: #fff;
+  border-color: var(--dark);
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */

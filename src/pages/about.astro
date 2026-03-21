@@ -97,6 +97,44 @@ const values = [
   <!-- DIVIDER -->
   <div class="section-rule"></div>
 
+  <!-- TEAM -->
+  <section class="team">
+    <div class="container">
+      <div class="t-header">
+        <span class="reveal-mask"><span class="section-label reveal-line">Our Team</span></span>
+        <h2 class="t-h2">
+          <span class="reveal-mask"><span class="reveal-line">The people</span></span>
+          <span class="reveal-mask"><span class="reveal-line">behind AMX</span></span>
+        </h2>
+      </div>
+      <div class="t-grid reveal-stagger">
+        <div class="t-card">
+          <div class="tc-img">
+            <img src="/img/1.jpeg" alt="AMX Team Member" loading="lazy" />
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="tc-img">
+            <img src="/img/2.jpeg" alt="AMX Team Member" loading="lazy" />
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="tc-img">
+            <img src="/img/3.jpeg" alt="AMX Team Member" loading="lazy" />
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="tc-img">
+            <img src="/img/4.jpeg" alt="AMX Team Member" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-rule"></div>
+
   <!-- CTA -->
   <section class="about-cta">
     <div class="container">
@@ -164,7 +202,7 @@ const values = [
     font-weight: 300;
     font-style: italic;
     line-height: 1.5;
-    color: #fff;
+    color: #0D111B;
     margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
   }
@@ -209,7 +247,7 @@ const values = [
     font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: -0.01em;
-    color: #fff;
+    color: #0D111B;
     margin-bottom: 1rem;
   }
   .vc-body {
@@ -218,6 +256,38 @@ const values = [
     color: var(--gray);
     font-weight: 300;
   }
+
+  /* TEAM */
+  .team {
+    padding: clamp(6rem, 12vw, 10rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .t-header { margin-bottom: 4rem; }
+  .t-h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 0.75rem;
+  }
+  .t-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .tc-img {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: #e8e4de;
+  }
+  .tc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+  }
+  .t-card:hover .tc-img img { transform: scale(1.05); }
 
   /* CTA */
   .about-cta {
@@ -255,8 +325,10 @@ const values = [
   @media (max-width: 900px) {
     .m-inner, .ap-inner, .ac-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .v-grid { grid-template-columns: repeat(2, 1fr); }
+    .t-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 520px) {
     .v-grid { grid-template-columns: 1fr; }
+    .t-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>

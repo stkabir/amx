@@ -141,8 +141,8 @@ import { projects } from '../data/projects.js';
     border-radius: 1px;
     transition: all 0.2s;
   }
-  .pfc-tab:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
-  .pfc-tab.active { background: #fff; color: var(--dark); border-color: #fff; }
+  .pfc-tab:hover { color: #0D111B; border-color: rgba(0,0,0,0.3); }
+  .pfc-tab.active { background: var(--dark); color: #fff; border-color: var(--dark); }
 
   /* ── FEATURED ─────────────────────────────────── */
   .pf-featured {
@@ -202,7 +202,7 @@ import { projects } from '../data/projects.js';
 
   .pffc-info {
     padding: 1.5rem 1.75rem 2rem;
-    background: var(--dark);
+    background: #F5F2EE;
     border-bottom: 1px solid var(--border);
   }
   .pffc-meta {
@@ -211,7 +211,7 @@ import { projects } from '../data/projects.js';
     text-transform: uppercase; color: var(--gray);
     margin-bottom: 0.5rem;
   }
-  .pffc-name { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.4rem; transition: opacity 0.2s; }
+  .pffc-name { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: #0D111B; margin-bottom: 0.4rem; transition: opacity 0.2s; }
   .pff-card:hover .pffc-name { opacity: 0.7; }
   .pffc-loc {
     display: flex; align-items: center; gap: 0.3rem;
@@ -222,7 +222,7 @@ import { projects } from '../data/projects.js';
     font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--gray); transition: color 0.2s;
   }
-  .pff-card:hover .pffc-cta { color: #fff; }
+  .pff-card:hover .pffc-cta { color: #0D111B; }
 
   /* ── REGULAR GRID ─────────────────────────────── */
   .pf-grid {
@@ -274,11 +274,11 @@ import { projects } from '../data/projects.js';
 
   .pfgc-info {
     padding: 1.25rem 1.5rem 1.75rem;
-    background: var(--dark);
+    background: #F5F2EE;
     border-bottom: 1px solid var(--border);
   }
   .pfgc-type { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.35rem; }
-  .pfgc-name { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; color: #fff; margin-bottom: 0.35rem; transition: opacity 0.2s; }
+  .pfgc-name { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; color: #0D111B; margin-bottom: 0.35rem; transition: opacity 0.2s; }
   .pfg-card:hover .pfgc-name { opacity: 0.7; }
   .pfgc-loc { display: flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; color: var(--gray); margin-bottom: 0.7rem; }
   .pfgc-desc { font-size: 0.83rem; line-height: 1.7; color: var(--gray); font-weight: 300; }
@@ -287,10 +287,15 @@ import { projects } from '../data/projects.js';
   .pf-cta {
     padding: clamp(6rem, 12vw, 10rem) 0;
     background: var(--blue);
+    color: #fff;
   }
   .pfc-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
   .pfci-h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-top: 0.75rem; }
   .pfci-right { display: flex; align-items: center; }
+
+  /* Blue CTA section — buttons stay white on dark bg */
+  .pf-cta .btn-white { background: #fff; color: var(--blue); border-color: #fff; }
+  .pf-cta .btn-white:hover { background: transparent; color: #fff; }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {

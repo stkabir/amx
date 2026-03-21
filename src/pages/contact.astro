@@ -200,7 +200,7 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.62rem; font-weight: 700;
     letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray);
   }
-  .cmii-val { font-size: 0.9rem; color: #fff; font-weight: 300; }
+  .cmii-val { font-size: 0.9rem; color: #0D111B; font-weight: 300; }
   .cmii-arrow { color: var(--gray); font-size: 0.9rem; text-align: right; }
 
   /* FORM */
@@ -227,11 +227,11 @@ import Layout from '../layouts/Layout.astro';
     text-transform: uppercase;
     color: var(--gray);
   }
-  .opt { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.62rem; color: rgba(179,179,179,0.6); }
+  .opt { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.62rem; color: rgba(100,100,100,0.7); }
   input, select, textarea {
-    background: rgba(255,255,255,0.04);
+    background: #fff;
     border: 1px solid var(--border);
-    color: #fff;
+    color: #0D111B;
     font-size: 0.88rem;
     font-family: 'Epilogue', sans-serif;
     padding: 0.8rem 1rem;
@@ -242,11 +242,11 @@ import Layout from '../layouts/Layout.astro';
     appearance: none;
     border-radius: 0;
   }
-  input::placeholder, textarea::placeholder { color: rgba(179,179,179,0.5); }
-  input:focus, select:focus, textarea:focus { border-color: rgba(255,255,255,0.4); }
+  input::placeholder, textarea::placeholder { color: rgba(100,100,100,0.5); }
+  input:focus, select:focus, textarea:focus { border-color: rgba(0,0,0,0.4); }
   select {
     cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b3b3b3' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.9rem center;
     background-size: 16px;
@@ -263,18 +263,18 @@ import Layout from '../layouts/Layout.astro';
     width: 100%;
     margin-top: 1.5rem;
     padding: 1rem 2rem;
-    background: #fff;
-    color: var(--dark);
+    background: var(--dark);
+    color: #fff;
     font-family: 'Epilogue', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    border: 1px solid #fff;
+    border: 1px solid var(--dark);
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  .cmf-submit:hover { background: transparent; color: #fff; }
+  .cmf-submit:hover { background: transparent; color: var(--dark); }
   .cmf-submit:disabled { opacity: 0.6; cursor: wait; }
 
   .cmf-success {
@@ -295,6 +295,7 @@ import Layout from '../layouts/Layout.astro';
   .contact-band {
     padding: clamp(5rem, 10vw, 9rem) 0;
     background: var(--blue);
+    color: #fff;
   }
   .cb-inner { text-align: center; }
   .cb-label {
