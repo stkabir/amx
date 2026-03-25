@@ -3,12 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import { projects } from '../data/projects.js';
 ---
 
-<Layout title="Portfolio" description="Explorá el portfolio de AMX Developers — desarrollos residenciales y proyectos de asset management premium en Buenos Aires.">
+<Layout title="Portfolio" description="Explora el portafolio de AMX Developers — desarrollos residenciales y proyectos de asset management premium en México.">
 
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
-      <span class="reveal-mask"><span class="section-label reveal-line">Nuestro Trabajo</span></span>
+      <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="pf-hero-label">Nuestro Trabajo</span></span>
       <h1>
         <span class="reveal-mask"><span class="reveal-line">Portfolio</span></span>
       </h1>
@@ -21,9 +21,9 @@ import { projects } from '../data/projects.js';
 
       <div class="pf-controls">
         <div class="pfc-tabs reveal-fade" role="tablist" aria-label="Categorías de proyectos">
-          <button class="pfc-tab active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-          <button class="pfc-tab" data-filter="development" role="tab" aria-selected="false">Desarrollo</button>
-          <button class="pfc-tab" data-filter="asset" role="tab" aria-selected="false">Asset Management</button>
+          <button class="pfc-tab active" data-filter="all" role="tab" aria-selected="true" data-i18n="pf-tab-all">Todos</button>
+          <button class="pfc-tab" data-filter="development" role="tab" aria-selected="false" data-i18n="pf-tab-dev">Desarrollo</button>
+          <button class="pfc-tab" data-filter="asset" role="tab" aria-selected="false" data-i18n="pf-tab-asset">Asset Management</button>
         </div>
       </div>
 
@@ -57,7 +57,7 @@ import { projects } from '../data/projects.js';
                 {proj.location}
               </p>
               <p class="pffc-desc">{proj.desc}</p>
-              <span class="pffc-cta">Ver proyecto →</span>
+              <span class="pffc-cta" data-i18n="pf-view">Ver proyecto →</span>
             </div>
           </a>
         ))}
@@ -98,14 +98,14 @@ import { projects } from '../data/projects.js';
     <div class="container">
       <div class="pfc-inner">
         <div class="pfci-left">
-          <span class="reveal-mask"><span class="section-label reveal-line">¿Interesado?</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="pf-cta-label">¿Interesado?</span></span>
           <h2 class="pfci-h2">
-            <span class="reveal-mask"><span class="reveal-line">Hablemos</span></span>
-            <span class="reveal-mask"><span class="reveal-line">de tu proyecto</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="pf-cta-h2-1">Hablemos</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="pf-cta-h2-2">de tu proyecto</span></span>
           </h2>
         </div>
         <div class="pfci-right reveal-fade">
-          <a href="/contact" class="btn btn-white">Contactanos</a>
+          <a href="/contact" class="btn btn-white" data-i18n="pf-cta-btn">Contactanos</a>
         </div>
       </div>
     </div>
