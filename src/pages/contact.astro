@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contact" description="Get in touch with AMX Developers. Reach us by email, WhatsApp, or Instagram.">
+<Layout title="Contacto" description="Contáctanos — AMX Developers. Escríbenos por email, WhatsApp o Instagram.">
 
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
-      <span class="reveal-mask"><span class="section-label reveal-line">Reach Out</span></span>
+      <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="contact-hero-label">Contáctanos</span></span>
       <h1>
-        <span class="reveal-mask"><span class="reveal-line">Contact</span></span>
+        <span class="reveal-mask"><span class="reveal-line" data-i18n="contact-hero-h1">Contacto</span></span>
       </h1>
     </div>
   </div>
@@ -22,13 +22,13 @@ import Layout from '../layouts/Layout.astro';
         <!-- LEFT: info -->
         <div class="cm-info">
           <div class="cmi-top">
-            <span class="reveal-mask"><span class="section-label reveal-line">Direct Contact</span></span>
+            <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="contact-section-label">Contacto Directo</span></span>
             <h2 class="cmi-h2">
-              <span class="reveal-mask"><span class="reveal-line">We'd love to</span></span>
-              <span class="reveal-mask"><span class="reveal-line">hear from you</span></span>
+              <span class="reveal-mask"><span class="reveal-line" data-i18n="contact-h2-1">Nos encantaría</span></span>
+              <span class="reveal-mask"><span class="reveal-line" data-i18n="contact-h2-2">saber de ti</span></span>
             </h2>
-            <p class="cmi-desc reveal-fade">
-              Whether you're interested in a development, exploring investment opportunities, or simply want to learn more — our team is here.
+            <p class="cmi-desc reveal-fade" data-i18n="contact-desc">
+              Si estás interesado en un desarrollo, explorando oportunidades de inversión, o simplemente deseas saber más — nuestro equipo está aquí para ayudarte.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <div class="cmii-body">
-                <span class="cmii-label">Email</span>
+                <span class="cmii-label" data-i18n="contact-email-label">Email</span>
                 <span class="cmii-val">adm@amxdevelopers.com</span>
               </div>
               <div class="cmii-arrow">→</div>
@@ -54,7 +54,7 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <div class="cmii-body">
-                <span class="cmii-label">WhatsApp</span>
+                <span class="cmii-label" data-i18n="contact-wa-label">WhatsApp</span>
                 <span class="cmii-val">+54 9 11 3383 9797</span>
               </div>
               <div class="cmii-arrow">→</div>
@@ -69,7 +69,7 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <div class="cmii-body">
-                <span class="cmii-label">Instagram</span>
+                <span class="cmii-label" data-i18n="contact-ig-label">Instagram</span>
                 <span class="cmii-val">@amxdevelopers</span>
               </div>
               <div class="cmii-arrow">→</div>
@@ -82,41 +82,41 @@ import Layout from '../layouts/Layout.astro';
           <form class="cm-form" id="contact-form" novalidate>
             <div class="cmf-row">
               <div class="cmf-field">
-                <label for="cf-name">Full Name</label>
-                <input type="text" id="cf-name" name="name" placeholder="Your full name" required autocomplete="name" />
+                <label for="cf-name" data-i18n="form-name-label">Nombre Completo</label>
+                <input type="text" id="cf-name" name="name" placeholder="Tu nombre completo" required autocomplete="name" data-i18n-placeholder="form-name-ph" />
               </div>
               <div class="cmf-field">
-                <label for="cf-email">Email Address</label>
-                <input type="email" id="cf-email" name="email" placeholder="your@email.com" required autocomplete="email" />
+                <label for="cf-email" data-i18n="form-email-label">Correo Electrónico</label>
+                <input type="email" id="cf-email" name="email" placeholder="tu@correo.com" required autocomplete="email" data-i18n-placeholder="form-email-ph" />
               </div>
             </div>
             <div class="cmf-field">
-              <label for="cf-phone">Phone / WhatsApp <span class="opt">(optional)</span></label>
-              <input type="tel" id="cf-phone" name="phone" placeholder="+54 9 11 ..." autocomplete="tel" />
+              <label for="cf-phone"><span data-i18n="form-phone-label">Teléfono / WhatsApp</span> <span class="opt" data-i18n="form-phone-opt">(opcional)</span></label>
+              <input type="tel" id="cf-phone" name="phone" placeholder="+52 55 ..." autocomplete="tel" data-i18n-placeholder="form-phone-ph" />
             </div>
             <div class="cmf-field">
-              <label for="cf-topic">Topic</label>
+              <label for="cf-topic" data-i18n="form-topic-label">Asunto</label>
               <select id="cf-topic" name="topic">
-                <option value="" disabled selected>Select a topic</option>
-                <option value="investment">Investment Inquiry</option>
-                <option value="residential">Residential Purchase</option>
-                <option value="partnership">Business Partnership</option>
-                <option value="other">Other</option>
+                <option value="" disabled selected data-i18n="form-topic-default">Selecciona un asunto</option>
+                <option value="investment" data-i18n="form-topic-inv">Consulta de Inversión</option>
+                <option value="residential" data-i18n="form-topic-res">Compra Residencial</option>
+                <option value="partnership" data-i18n="form-topic-part">Asociación de Negocios</option>
+                <option value="other" data-i18n="form-topic-other">Otro</option>
               </select>
             </div>
             <div class="cmf-field">
-              <label for="cf-msg">Message</label>
-              <textarea id="cf-msg" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+              <label for="cf-msg" data-i18n="form-msg-label">Mensaje</label>
+              <textarea id="cf-msg" name="message" rows="5" placeholder="¿En qué podemos ayudarte?" required data-i18n-placeholder="form-msg-ph"></textarea>
             </div>
             <button type="submit" class="cmf-submit" id="cmf-submit">
-              <span class="cmfs-text">Send Message</span>
+              <span class="cmfs-text" data-i18n="form-submit">Enviar Mensaje</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
                 <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
               </svg>
             </button>
             <div class="cmf-success" id="cmf-success" aria-live="polite">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
-              Message sent successfully. We'll be in touch soon.
+              <span data-i18n="form-success">Mensaje enviado con éxito. Nos pondremos en contacto pronto.</span>
             </div>
           </form>
         </div>
@@ -129,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="contact-band">
     <div class="container">
       <div class="cb-inner">
-        <p class="cb-label reveal-fade">Buenos Aires, Argentina</p>
+        <p class="cb-label reveal-fade" data-i18n="contact-band-label">Ciudad de México, México</p>
         <h2 class="cb-h2">
           <span class="reveal-mask"><span class="reveal-line">AMX Developers</span></span>
         </h2>
@@ -335,23 +335,25 @@ import Layout from '../layouts/Layout.astro';
 
 <script is:inline>
 (function () {
-  const form = document.getElementById('contact-form');
-  const btn  = document.getElementById('cmf-submit');
-  const succ = document.getElementById('cmf-success');
+  var form = document.getElementById('contact-form');
+  var btn  = document.getElementById('cmf-submit');
+  var succ = document.getElementById('cmf-success');
 
   if (form) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
       btn.disabled = true;
-      btn.querySelector('.cmfs-text').textContent = 'Sending…';
+      var lang = window.amxLang || 'es';
+      btn.querySelector('.cmfs-text').textContent = lang === 'es' ? 'Enviando...' : 'Sending…';
 
-      await new Promise(r => setTimeout(r, 1100));
+      await new Promise(function(r) { setTimeout(r, 1100); });
 
       form.reset();
       btn.disabled = false;
-      btn.querySelector('.cmfs-text').textContent = 'Send Message';
+      var sendText = document.querySelector('[data-i18n="form-submit"]');
+      btn.querySelector('.cmfs-text').textContent = sendText ? sendText.textContent : (lang === 'es' ? 'Enviar Mensaje' : 'Send Message');
       succ.classList.add('visible');
-      setTimeout(() => succ.classList.remove('visible'), 7000);
+      setTimeout(function() { succ.classList.remove('visible'); }, 7000);
     });
   }
 })();

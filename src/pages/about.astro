@@ -1,23 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const values = [
-  { n: '01', title: 'Excellence', body: 'Every detail matters. From the initial concept to the finishing touches, we hold ourselves to the highest standards of architectural quality and craftsmanship.' },
-  { n: '02', title: 'Integrity', body: 'Transparent dealing, honest timelines, and a steadfast commitment to every promise we make to our clients, partners, and communities.' },
-  { n: '03', title: 'Vision', body: 'We anticipate where communities are heading — and build the spaces that will define them for decades to come.' },
-  { n: '04', title: 'Community', body: 'We develop not just buildings, but living ecosystems — places where people connect, grow, and truly belong.' },
-];
 ---
 
-<Layout title="About" description="Learn about AMX Developers — our mission, vision, and the values that drive premium real estate development in Buenos Aires.">
+<Layout title="About" description="Conoce AMX Developers — nuestra misión, visión y los valores que impulsan el desarrollo inmobiliario premium en México.">
 
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
-      <span class="reveal-mask"><span class="section-label reveal-line">About AMX Developers</span></span>
+      <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="about-hero-label">Sobre AMX Developers</span></span>
       <h1>
-        <span class="reveal-mask"><span class="reveal-line">Our</span></span>
-        <span class="reveal-mask"><span class="reveal-line">Story</span></span>
+        <span class="reveal-mask"><span class="reveal-line" data-i18n="about-hero-h1-1">Nuestra</span></span>
+        <span class="reveal-mask"><span class="reveal-line" data-i18n="about-hero-h1-2">Historia</span></span>
       </h1>
     </div>
   </div>
@@ -27,22 +20,22 @@ const values = [
     <div class="container">
       <div class="m-inner">
         <div class="m-col m-col--label">
-          <span class="reveal-mask"><span class="section-label reveal-line">Mission</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="about-mission-label">Misión</span></span>
         </div>
         <div class="m-col m-col--body">
           <h2 class="m-h2">
-            <span class="reveal-mask"><span class="reveal-line">Building the Future.</span></span>
-            <span class="reveal-mask"><span class="reveal-line">Living the Present.</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="about-mission-h2-1">Construyendo el Futuro.</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="about-mission-h2-2">Viviendo el Presente.</span></span>
           </h2>
           <div class="m-copy">
-            <p class="reveal-fade">
-              AMX Developers was founded with a singular ambition: to redefine what premium real estate means in Argentina. We believe that architecture has the power to transform cities, shape culture, and improve the quality of everyday life.
+            <p class="reveal-fade" data-i18n="about-mission-p1">
+              AMX Developers fue fundada con una ambición singular: redefinir lo que significa el desarrollo inmobiliario premium en México y más allá. Creemos que la arquitectura tiene el poder de transformar ciudades, moldear culturas y mejorar la calidad de vida cotidiana.
             </p>
-            <p class="reveal-fade">
-              Every project we undertake is guided by a relentless pursuit of quality. From the initial concept to final delivery, we demand excellence at every stage — from our team, our partners, and ourselves.
+            <p class="reveal-fade" data-i18n="about-mission-p2">
+              Cada proyecto que emprendemos está guiado por una búsqueda incansable de calidad. Desde el concepto inicial hasta la entrega final, exigimos excelencia en cada etapa — a nuestro equipo, nuestros socios y a nosotros mismos.
             </p>
-            <p class="reveal-fade">
-              We are not just developers. We are urban visionaries, crafting the landmarks that future generations will call home.
+            <p class="reveal-fade" data-i18n="about-mission-p3">
+              No somos solo desarrolladores. Somos visionarios urbanos, creando los referentes que las futuras generaciones llamarán hogar.
             </p>
           </div>
         </div>
@@ -58,13 +51,13 @@ const values = [
     <div class="container">
       <div class="ap-inner">
         <div class="ap-label">
-          <span class="reveal-mask"><span class="section-label reveal-line">Our Approach</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="about-approach-label">Nuestro Enfoque</span></span>
         </div>
         <div class="ap-body">
-          <blockquote class="ap-quote reveal-fade">
-            "We build spaces worthy of the people who will fill them. Every beam, every facade, every common area is a decision about how life can be lived better."
+          <blockquote class="ap-quote reveal-fade" data-i18n="about-approach-quote">
+            "En AMX Developers nos impulsa la visión de redefinir el desarrollo inmobiliario a través de proyectos premium y de lujo. Cada desarrollo representa una oportunidad para innovar, elevar estándares y superar límites, generando valor duradero para nuestros inversionistas y las comunidades que servimos. Con una perspectiva global y un firme compromiso con la excelencia, AMX Developers se dedica a construir un legado distintivo: una comunidad excepcional a la vez."
           </blockquote>
-          <cite class="ap-cite reveal-fade">— AMX Developers</cite>
+          <cite class="ap-cite reveal-fade" data-i18n="about-approach-cite">— AMX Developers</cite>
         </div>
       </div>
     </div>
@@ -77,19 +70,32 @@ const values = [
   <section class="values">
     <div class="container">
       <div class="v-header">
-        <span class="reveal-mask"><span class="section-label reveal-line">Core Values</span></span>
+        <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="about-values-label">Valores Fundamentales</span></span>
         <h2 class="v-h2">
-          <span class="reveal-mask"><span class="reveal-line">What drives us</span></span>
+          <span class="reveal-mask"><span class="reveal-line" data-i18n="about-values-h2">Lo que nos impulsa</span></span>
         </h2>
       </div>
       <div class="v-grid reveal-stagger">
-        {values.map(v => (
-          <div class="v-card">
-            <span class="vc-num">{v.n}</span>
-            <h3 class="vc-title">{v.title}</h3>
-            <p class="vc-body">{v.body}</p>
-          </div>
-        ))}
+        <div class="v-card">
+          <span class="vc-num">01</span>
+          <h3 class="vc-title" data-i18n="about-v1-title">Excelencia</h3>
+          <p class="vc-body" data-i18n="about-v1-body">Cada detalle importa. Desde el concepto inicial hasta los toques finales, nos sostenemos en los más altos estándares de calidad arquitectónica y artesanía.</p>
+        </div>
+        <div class="v-card">
+          <span class="vc-num">02</span>
+          <h3 class="vc-title" data-i18n="about-v2-title">Integridad</h3>
+          <p class="vc-body" data-i18n="about-v2-body">Transparencia en los tratos, plazos honestos y un compromiso inquebrantable con cada promesa que hacemos a nuestros clientes, socios y comunidades.</p>
+        </div>
+        <div class="v-card">
+          <span class="vc-num">03</span>
+          <h3 class="vc-title" data-i18n="about-v3-title">Visión</h3>
+          <p class="vc-body" data-i18n="about-v3-body">Anticipamos hacia dónde se dirigen las comunidades — y construimos los espacios que las definirán por décadas.</p>
+        </div>
+        <div class="v-card">
+          <span class="vc-num">04</span>
+          <h3 class="vc-title" data-i18n="about-v4-title">Comunidad</h3>
+          <p class="vc-body" data-i18n="about-v4-body">Desarrollamos no solo edificios, sino ecosistemas de vida — lugares donde las personas se conectan, crecen y verdaderamente pertenecen.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -101,10 +107,10 @@ const values = [
   <section class="team">
     <div class="container">
       <div class="t-header">
-        <span class="reveal-mask"><span class="section-label reveal-line">Our Team</span></span>
+        <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="about-team-label">Nuestro Equipo</span></span>
         <h2 class="t-h2">
-          <span class="reveal-mask"><span class="reveal-line">The people</span></span>
-          <span class="reveal-mask"><span class="reveal-line">behind AMX</span></span>
+          <span class="reveal-mask"><span class="reveal-line" data-i18n="about-team-h2-1">El equipo</span></span>
+          <span class="reveal-mask"><span class="reveal-line" data-i18n="about-team-h2-2">detrás de AMX</span></span>
         </h2>
       </div>
       <div class="t-grid reveal-stagger">
@@ -140,17 +146,17 @@ const values = [
     <div class="container">
       <div class="ac-inner">
         <div class="ac-left">
-          <span class="reveal-mask"><span class="section-label reveal-line">Explore</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="about-cta-label">Explorar</span></span>
           <h2 class="ac-h2">
-            <span class="reveal-mask"><span class="reveal-line">See what</span></span>
-            <span class="reveal-mask"><span class="reveal-line">we've built</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="about-cta-h2-1">Descubre lo que</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="about-cta-h2-2">hemos construido</span></span>
           </h2>
         </div>
         <div class="ac-right reveal-fade">
-          <p>Our portfolio spans luxury towers, waterfront residences, mixed-use developments, and curated gated communities across Buenos Aires.</p>
+          <p data-i18n="about-cta-p">Nuestro portafolio abarca torres de lujo, residencias frente al mar, desarrollos de uso mixto y comunidades privadas en México.</p>
           <div class="ac-btns">
-            <a href="/portfolio" class="btn btn-white">View Portfolio</a>
-            <a href="/contact" class="btn btn-outline">Contact Us</a>
+            <a href="/portfolio" class="btn btn-white" data-i18n="about-cta-btn-1">Ver Portafolio</a>
+            <a href="/contact" class="btn btn-outline" data-i18n="about-cta-btn-2">Contáctanos</a>
           </div>
         </div>
       </div>
