@@ -203,6 +203,42 @@ export const projects = [
     ],
     bg: 'linear-gradient(160deg, #0a0810 0%, #181020 60%, #201835 100%)',
   },
+  {
+    slug: 'hotel-moxy-miami-wynwood',
+    name: 'Hotel Moxy Miami Wynwood',
+    location: 'Miami, Florida',
+    type: 'Hotel Boutique',
+    category: 'development',
+    status: 'Completed',
+    year: 2023,
+    floors: 8,
+    units: 167,
+    area: '12.500 m²',
+    detail: '8 Pisos · 167 Habitaciones',
+    desc: 'Un vibrante hotel boutique de la cadena Marriott en el corazón artístico de Wynwood, Miami, diseñado para viajeros modernos que buscan experiencia y estilo.',
+    longDesc: [
+      'Hotel Moxy Miami Wynwood representa la entrada de AMX Developers en el mercado hotelero de Estados Unidos a través de una colaboración estratégica con Marriott International. Ubicado en el corazón del distrito artístico de Wynwood, este hotel boutique de 8 pisos ofrece 167 habitaciones diseñadas para viajeros que valoran la experiencia sobre el lujo tradicional.',
+      'El diseño del hotel captura la energía creativa de Wynwood, con una impresionante colección de arte urbano, murales de artistas locales y espacios públicos vibrantes. El rooftop cuenta con una piscina infinita con vistas al skyline de Miami, un bar lounge y espacios para eventos que se han convertido en referentes del barrio.',
+      'Desde su apertura en 2023, el hotel ha mantenido una ocupación promedio del 92% y ha recibido múltiples premios de diseño, incluyendo el Hospitality Design Award 2024 por su integración exitosa del arte contemporáneo con la hospitalidad moderna.',
+    ],
+    features: [
+      'Rooftop con piscina infinita y bar lounge',
+      'Colección curada de arte urbano y murales',
+      'Gimnasio de última generación',
+      'Espacios de coworking y reuniones',
+      'Restaurante conceptual en planta baja',
+      'Ubicación estratégica en Wynwood Arts District',
+    ],
+    image: '/img/hotel-moxy/ox-miaon-miaon-exterior-15474_Wide-Ver.jpeg',
+    images: [
+      '/img/hotel-moxy/ox-miaon-miaon-exterior-42395_Wide-Ver.jpeg',
+      '/img/hotel-moxy/ox-miaon-miaon-lobby-10998_Wide-Hor.jpeg',
+      '/img/hotel-moxy/ox-miaon-miaon-rooftop-pool-28834_Wide-Hor.jpeg',
+      '/img/hotel-moxy/ox-miaon-miaon-graffiti-28764-12119_Wide-Hor.jpeg',
+      '/img/hotel-moxy/ox-miaon-miaon-skyline-19829_Wide-Hor.jpeg',
+    ],
+    bg: 'linear-gradient(160deg, #ff6b35 0%, #f7931e 60%, #fdc830 100%)',
+  },
 ];
 
 export function getProjectBySlug(slug) {

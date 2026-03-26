@@ -2,14 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import { projects as allProjects } from '../data/projects.js';
 
-const projects = allProjects.slice(0, 4);
+const projects = allProjects.slice(0, 8);
+// const projects = allProjects;
 ---
 
 <Layout title="Home" description="AMX Developers — Desarrollo inmobiliario premium en México.">
 
   <!-- ══════════════════════════════════════════════════════ HERO -->
   <section class="hero" id="hero">
-    <div id="hero-particles" aria-hidden="true"></div>
+    <div class="hero-video" aria-hidden="true">
+      <video autoplay muted loop playsinline>
+        <source src="/img/vid-amx.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <div class="hero-content">
       <div class="hero-label-wrap h-mask">
@@ -27,7 +32,7 @@ const projects = allProjects.slice(0, 4);
         </span>
       </h1>
       <div class="hero-copy h-fade" id="hero-copy">
-        <p data-i18n="hero-copy">Firma de desarrollo inmobiliario con base en México, fundada por socios con amplia experiencia en mercados internacionales como Miami y Nueva York. Creamos proyectos premium y de lujo con estándares globales.</p>
+        <p data-i18n="hero-copy">Somos una firma de desarrollo inmobiliario con base en México, impulsada por una visión global y respaldada por la experiencia de nuestros socios en mercados icónicos. Diseñamos y creamos espacios excepcionales que redefinen el concepto de lujo, elevando el estándar de vida a través de proyectos únicos, sofisticados y atemporales.</p>
       </div>
       <div class="hero-cta h-fade">
         <a href="/portfolio" class="btn btn-white" data-i18n="hero-btn-1">Ver Portafolio</a>
@@ -169,15 +174,18 @@ const projects = allProjects.slice(0, 4);
     overflow: hidden;
     background: #F5F2EE;
   }
-  #hero-particles {
+  .hero-video {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
-  #hero-particles canvas {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
+  .hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .hero-content {
     position: relative;
@@ -210,7 +218,6 @@ const projects = allProjects.slice(0, 4);
   .hero-copy p {
     font-size: clamp(0.9rem, 1.4vw, 1.05rem);
     line-height: 1.8;
-    color: var(--gray);
     font-weight: 300;
   }
   .hero-cta {
@@ -494,58 +501,6 @@ const projects = allProjects.slice(0, 4);
 
 <script is:inline>
 (function () {
-  // ─── HERO PARTICLES (p5.js) ──────────────────────────────────────────────
-  new p5(function (p) {
-    const N = 70;
-    let pts = [];
-
-    class Pt {
-      constructor() { this.init(); }
-      init() {
-        this.x = p.random(p.width);
-        this.y = p.random(p.height);
-        this.vx = p.random(-0.35, 0.35);
-        this.vy = p.random(-0.55, -0.1);
-        this.r = p.random(1.5, 3.5);
-        this.a = p.random(60, 160);
-        this.spd = p.random(0.05, 0.1);
-      }
-      update() {
-        const dx = p.mouseX - this.x;
-        const dy = p.mouseY - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 180 && dist > 0) {
-          this.vy -= (1 - dist / 180) * this.spd * 2.5;
-          this.vx += (dx / dist) * this.spd * 0.4;
-        }
-        this.vx *= 0.99; this.vy *= 0.99;
-        this.vy += 0.012; // gravity
-        this.x += this.vx; this.y += this.vy;
-        if (this.y < -6) this.y = p.height + 6;
-        if (this.y > p.height + 6) this.y = -6;
-        if (this.x < -6) this.x = p.width + 6;
-        if (this.x > p.width + 6) this.x = -6;
-      }
-      draw() {
-        p.noStroke();
-        p.fill(13, 17, 27, this.a);
-        p.ellipse(this.x, this.y, this.r, this.r);
-      }
-    }
-
-    p.setup = function () {
-      p.createCanvas(p.windowWidth, p.windowHeight).parent('hero-particles');
-      for (let i = 0; i < N; i++) pts.push(new Pt());
-    };
-    p.draw = function () {
-      p.clear();
-      pts.forEach(pt => { pt.update(); pt.draw(); });
-    };
-    p.windowResized = function () {
-      p.resizeCanvas(p.windowWidth, p.windowHeight);
-    };
-  });
-
   // ─── HERO LINE REVEALS (after page intro, delay) ──────────────────────────
   gsap.fromTo('.hero-h1 .h-line',
     { y: '110%' },
