@@ -44,13 +44,20 @@ const navLinks = [
       <img src="/img/logo.jpeg" alt="AMX Developers" class="logo-img" />
     </a>
 
-    <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation" aria-expanded="false">
+    <div class="header-right">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Cambiar idioma">
+        <span class="lt-es">ES</span>
+        <span class="lt-sep">/</span>
+        <span class="lt-en">EN</span>
+      </button>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation" aria-expanded="false">
       <div class="menu-icon">
         <span class="ml ml-1"></span>
         <span class="ml ml-2"></span>
         <span class="ml ml-3"></span>
       </div>
     </button>
+    </div>
   </header>
 
   <!-- FULLSCREEN NAV OVERLAY -->
@@ -403,11 +410,28 @@ const navLinks = [
       localStorage.setItem('amx-lang', lang);
     }
 
-    // Expose publicly for programmatic use only: window.amxApplyLang('en')
+    // Expose publicly
     window.amxApplyLang = applyTranslations;
 
-    // Apply on initial load (before GSAP animations begin)
+    // Update lang toggle visual state
+    function syncLangToggle(lang) {
+      var btn = document.getElementById('lang-toggle');
+      if (btn) btn.setAttribute('data-lang', lang);
+    }
+
+    // Wire up lang toggle button
+    var langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.addEventListener('click', function() {
+        var next = currentLang === 'es' ? 'en' : 'es';
+        applyTranslations(next);
+        syncLangToggle(next);
+      });
+    }
+
+    // Apply on initial load
     applyTranslations(currentLang);
+    syncLangToggle(currentLang);
 
     // ─── REGISTER GSAP PLUGINS ───────────────────────────────────────────────
     gsap.registerPlugin(ScrollTrigger);
@@ -703,6 +727,39 @@ input, textarea { font: inherit; }
   object-fit: cover;
   border-radius: 8px;
 }
+
+/* HEADER RIGHT */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* LANG TOGGLE */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: opacity 0.2s ease;
+  position: relative;
+  z-index: 1200;
+}
+.lang-toggle:hover { opacity: 0.6; }
+.lt-sep { opacity: 0.35; }
+.lt-es, .lt-en { transition: opacity 0.2s ease; }
+.lang-toggle[data-lang="es"] .lt-es { opacity: 1; }
+.lang-toggle[data-lang="es"] .lt-en { opacity: 0.35; }
+.lang-toggle[data-lang="en"] .lt-en { opacity: 1; }
+.lang-toggle[data-lang="en"] .lt-es { opacity: 0.35; }
 
 /* HAMBURGER */
 .menu-btn {
