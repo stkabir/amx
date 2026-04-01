@@ -7,10 +7,10 @@ const { title, description = 'AMX Developers — Desarrollo Inmobiliario Premium
 const pathname = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', key: 'nav-home' },
+  { href: '/about', key: 'nav-about' },
+  { href: '/portfolio', key: 'nav-portfolio' },
+  { href: '/contact', key: 'nav-contact' },
 ];
 ---
 
@@ -20,7 +20,8 @@ const navLinks = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="/faviconamx.jpeg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="/faviconamx.jpeg" />
   <title>{title} | AMX Developers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,7 +74,7 @@ const navLinks = [
                 href={link.href}
                 class:list={['nsl-link', { 'is-active': pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) }]}
               >
-                <span class="nsl-label" data-label={link.label}>{link.label}</span>
+                <span class="nsl-label" data-i18n={link.key}>{link.key}</span>
               </a>
             </li>
           ))}
@@ -85,7 +86,7 @@ const navLinks = [
         {navLinks.map((link, i) => (
           <div class="nll-item" style={`--i: ${i}`}>
             <a href={link.href} class="nll-link">
-              <span class="nll-text" data-text={link.label}>{link.label}</span>
+              <span class="nll-text" data-i18n={link.key}>{link.key}</span>
               <div class="nll-img" style={`background: ${['linear-gradient(135deg,#001020,#003060)','linear-gradient(135deg,#0a1828,#1e3653)','linear-gradient(135deg,#050c18,#002040)','linear-gradient(135deg,#080f1c,#0d1e35)'][i]}`}></div>
             </a>
           </div>
@@ -118,7 +119,7 @@ const navLinks = [
         <div class="ft-col ft-nav">
           <p class="ft-heading" data-i18n="footer-nav-heading">Navegación</p>
           <ul>
-            {navLinks.map(link => <li><a href={link.href}>{link.label}</a></li>)}
+            {navLinks.map(link => <li><a href={link.href} data-i18n={link.key}>{link.key}</a></li>)}
           </ul>
         </div>
 
@@ -181,6 +182,10 @@ const navLinks = [
     var T = {
       es: {
         'footer-nav-heading': 'Navegación',
+        'nav-home': 'Inicio',
+        'nav-about': 'Nosotros',
+        'nav-portfolio': 'Portafolio',
+        'nav-contact': 'Contacto',
         'footer-mailing-heading': 'Mantente Informado',
         'footer-mailing-sub': 'Suscríbete para recibir nuestras últimas noticias y desarrollos.',
         'footer-email-ph': 'Tu correo electrónico',
@@ -286,6 +291,10 @@ const navLinks = [
       },
       en: {
         'footer-nav-heading': 'Navigation',
+        'nav-home': 'Home',
+        'nav-about': 'About',
+        'nav-portfolio': 'Portfolio',
+        'nav-contact': 'Contact',
         'footer-mailing-heading': 'Stay Updated',
         'footer-mailing-sub': 'Sign up to receive our latest news and developments.',
         'footer-email-ph': 'Your email address',
@@ -408,6 +417,9 @@ const navLinks = [
         if (t[key] !== undefined) el.placeholder = t[key];
       });
       localStorage.setItem('amx-lang', lang);
+
+      // Trigger language change event for navigation animations
+      window.dispatchEvent(new CustomEvent('amxLangChanged'));
     }
 
     // Expose publicly
@@ -543,20 +555,29 @@ const navLinks = [
     });
 
     // ─── SMALL NAV LINK: char slide animation ────────────────────────────────
-    overlay.querySelectorAll('.nsl-link').forEach(function(link) {
-      var label = link.querySelector('.nsl-label');
-      var text = label.dataset.label;
-      label.innerHTML = text.split('').map(function(c) {
-        return '<span class="ch" style="display:inline-block;overflow:hidden;"><span class="chi" style="display:inline-block;">' + (c === ' ' ? '&nbsp;' : c) + '</span></span>';
-      }).join('');
+    function initNavCharAnimation() {
+      overlay.querySelectorAll('.nsl-link').forEach(function(link) {
+        var label = link.querySelector('.nsl-label');
+        var key = label.getAttribute('data-i18n');
+        var text = T[currentLang][key] || key;
+        label.innerHTML = text.split('').map(function(c) {
+          return '<span class="ch" style="display:inline-block;overflow:hidden;"><span class="chi" style="display:inline-block;">' + (c === ' ' ? '&nbsp;' : c) + '</span></span>';
+        }).join('');
 
-      link.addEventListener('mouseenter', function() {
-        gsap.to(link.querySelectorAll('.chi'), { y: '-105%', stagger: 0.018, duration: 0.28, ease: 'power2.inOut' });
+        link.addEventListener('mouseenter', function() {
+          gsap.to(link.querySelectorAll('.chi'), { y: '-105%', stagger: 0.018, duration: 0.28, ease: 'power2.inOut' });
+        });
+        link.addEventListener('mouseleave', function() {
+          gsap.to(link.querySelectorAll('.chi'), { y: '0%', stagger: { each: 0.018, from: 'end' }, duration: 0.28, ease: 'power2.inOut' });
+        });
       });
-      link.addEventListener('mouseleave', function() {
-        gsap.to(link.querySelectorAll('.chi'), { y: '0%', stagger: { each: 0.018, from: 'end' }, duration: 0.28, ease: 'power2.inOut' });
-      });
-    });
+    }
+
+    // Initialize on load
+    initNavCharAnimation();
+
+    // Re-initialize when language changes
+    window.addEventListener('amxLangChanged', initNavCharAnimation);
 
     // ─── SCROLL REVEAL: lines ────────────────────────────────────────────────
     gsap.utils.toArray('.reveal-line').forEach(function(el) {
