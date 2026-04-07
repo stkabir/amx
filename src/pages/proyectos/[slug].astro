@@ -22,7 +22,7 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
       <div class="proj-hero-grad"></div>
     </div>
 
-    <a href="/portfolio" class="proj-back h-fade">
+    <a href="/portfolio" class="proj-back ">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14">
         <path d="M19 12H5M12 5l-7 7 7 7"/>
       </svg>
@@ -31,13 +31,13 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
 
     <div class="proj-hero-content">
       <div class="proj-hero-inner container">
-        <span class="h-mask"><span class="section-label h-line">{project.type}</span></span>
+        <span><span class="section-label ">{project.type}</span></span>
         <h1 class="proj-title">
           {project.name.split(' ').map((word: string) => (
-            <span class="h-mask"><span class="h-line proj-word">{word}</span></span>
+            <span><span class=" proj-word">{word}</span></span>
           ))}
         </h1>
-        <div class="proj-hero-meta h-fade">
+        <div class="proj-hero-meta ">
           <span class="proj-location-tag">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -50,13 +50,13 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
       </div>
     </div>
 
-    <div class="proj-scroll-hint h-fade" aria-hidden="true">
+    <div class="proj-scroll-hint " aria-hidden="true">
       <span class="psh-line"></span>
     </div>
   </section>
 
   <!-- STATS BAR -->
-  <div class="proj-stats reveal-fade">
+  <div class="proj-stats ">
     <div class="container">
       <div class="proj-stats-inner">
         {project.floors && (
@@ -94,15 +94,15 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
 
         <!-- Left: description + features -->
         <div class="proj-main">
-          <div class="proj-desc reveal-fade">
+          <div class="proj-desc ">
             {project.longDesc.map((para: string) => <p>{para}</p>)}
           </div>
 
-          <div class="proj-features reveal-fade">
+          <div class="proj-features ">
             <h3 class="pf-heading">
-              <span class="reveal-mask"><span class="reveal-line">Destacados del Proyecto</span></span>
+              <span><span>Destacados del Proyecto</span></span>
             </h3>
-            <ul class="pf-list reveal-stagger">
+            <ul class="pf-list ">
               {project.features.map((feat: string) => (
                 <li class="pfl-item">
                   <span class="pfl-dash">—</span>
@@ -114,7 +114,7 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
         </div>
 
         <!-- Right: sidebar -->
-        <aside class="proj-sidebar reveal-fade">
+        <aside class="proj-sidebar ">
           <div class="psb-card">
             <h3 class="psb-heading">Detalles</h3>
             <dl class="psb-list">
@@ -140,7 +140,7 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
 
   <!-- GALLERY -->
   <section class="proj-gallery">
-    <div class="proj-gallery-grid reveal-fade">
+    <div class="proj-gallery-grid ">
       <div class="pgg-main">
         <img src={project.images[0]} alt={`${project.name} — Vista 1`} loading="lazy" />
       </div>
@@ -154,11 +154,11 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
   <!-- MORE PROJECTS -->
   <!-- <section class="proj-more">
     <div class="container">
-      <div class="proj-more-header reveal-fade">
+      <div class="proj-more-header ">
         <span class="section-label">Más Proyectos</span>
         <a href="/portfolio" class="pm-all-link">Ver todos →</a>
       </div>
-      <div class="proj-more-grid reveal-stagger">
+      <div class="proj-more-grid ">
         {related.map(rel => (
           <a href={`/proyectos/${rel.slug}`} class="pmg-card">
             <div class="pmgc-visual">
@@ -188,13 +188,13 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
     <div class="container">
       <div class="proj-cta-inner">
         <div class="proj-cta-left">
-          <span class="reveal-mask"><span class="section-label reveal-line">¿Interesado?</span></span>
+          <span><span class="section-label ">¿Interesado?</span></span>
           <h2 class="proj-cta-h2">
-            <span class="reveal-mask"><span class="reveal-line">Hablemos</span></span>
-            <span class="reveal-mask"><span class="reveal-line">de tu proyecto</span></span>
+            <span><span>Hablemos</span></span>
+            <span><span>de tu proyecto</span></span>
           </h2>
         </div>
-        <div class="proj-cta-right reveal-fade">
+        <div class="proj-cta-right ">
           <a href="/contact" class="btn btn-white">Contactanos</a>
         </div>
       </div>
@@ -268,8 +268,6 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
     line-height: 0.95;
     margin: 0.5rem 0 1.5rem;
   }
-  .h-mask { overflow: hidden; display: inline-block; }
-  .h-line { display: inline-block; }
   .proj-word { display: inline-block; }
 
   .proj-hero-meta {
@@ -620,50 +618,3 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
   }
 </style>
 
-<script is:inline>
-(function () {
-  // Hero parallax
-  const heroImg = document.querySelector('.proj-hero-img');
-  if (heroImg && window.innerWidth > 768) {
-    gsap.to(heroImg, {
-      scrollTrigger: {
-        trigger: '.proj-hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-      y: '25%',
-      ease: 'none',
-    });
-  }
-
-  // Hero text reveal (after page intro)
-  const heroLines = document.querySelectorAll('.proj-hero .h-line');
-  const heroFades = document.querySelectorAll('.proj-hero .h-fade');
-
-  if (heroLines.length) {
-    gsap.fromTo(heroLines,
-      { y: '110%' },
-      {
-        y: '0%',
-        stagger: 0.09,
-        duration: 1.1,
-        ease: 'power3.out',
-        delay: 1.1,
-      }
-    );
-  }
-  if (heroFades.length) {
-    gsap.fromTo(heroFades,
-      { y: 24, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        stagger: 0.1,
-        duration: 0.85,
-        ease: 'power2.out',
-        delay: 1.45,
-      }
-    );
-  }
-})();
-</script>

@@ -8,9 +8,9 @@ import { projects } from '../data/projects.js';
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
-      <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="pf-hero-label">Nuestro Trabajo</span></span>
+      <span><span class="section-label ">Nuestro Trabajo</span></span>
       <h1>
-        <span class="reveal-mask"><span class="reveal-line">Portfolio</span></span>
+        <span><span>Portfolio</span></span>
       </h1>
     </div>
   </div>
@@ -20,9 +20,9 @@ import { projects } from '../data/projects.js';
     <div class="container">
 
       <div class="pf-controls">
-        <div class="pfc-tabs reveal-fade" role="tablist" aria-label="Categorías de proyectos">
-          <button class="pfc-tab active" data-filter="all" role="tab" aria-selected="true" data-i18n="pf-tab-all">Todos</button>
-          <button class="pfc-tab" data-filter="development" role="tab" aria-selected="false" data-i18n="pf-tab-dev">Desarrollo</button>
+        <div class="pfc-tabs " role="tablist" aria-label="Categorías de proyectos">
+          <button class="pfc-tab active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+          <button class="pfc-tab" data-filter="development" role="tab" aria-selected="false">Desarrollo</button>
         </div>
       </div>
 
@@ -56,14 +56,14 @@ import { projects } from '../data/projects.js';
                 {proj.location}
               </p>
               <p class="pffc-desc">{proj.desc}</p>
-              <span class="pffc-cta" data-i18n="pf-view">Ver proyecto →</span>
+              <span class="pffc-cta">Ver proyecto →</span>
             </div>
           </a>
         ))}
       </div>
 
       <!-- Regular grid (rest) -->
-      <div class="pf-grid reveal-stagger" id="pf-grid">
+      <div class="pf-grid " id="pf-grid">
         {projects.slice(2).map(proj => (
           <a href={`/proyectos/${proj.slug}`} class="pfg-card" data-category={proj.category}>
             <div class="pfgc-visual">
@@ -97,14 +97,14 @@ import { projects } from '../data/projects.js';
     <div class="container">
       <div class="pfc-inner">
         <div class="pfci-left">
-          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="pf-cta-label">¿Interesado?</span></span>
+          <span><span class="section-label ">¿Interesado?</span></span>
           <h2 class="pfci-h2">
-            <span class="reveal-mask"><span class="reveal-line" data-i18n="pf-cta-h2-1">Hablemos</span></span>
-            <span class="reveal-mask"><span class="reveal-line" data-i18n="pf-cta-h2-2">de tu proyecto</span></span>
+            <span><span>Hablemos</span></span>
+            <span><span>de tu proyecto</span></span>
           </h2>
         </div>
-        <div class="pfci-right reveal-fade">
-          <a href="/contact" class="btn btn-white" data-i18n="pf-cta-btn">Contactanos</a>
+        <div class="pfci-right ">
+          <a href="/contact" class="btn btn-white">Contactanos</a>
         </div>
       </div>
     </div>
