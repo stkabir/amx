@@ -17,32 +17,32 @@ const projects = allProjects.slice(0, 8);
     </div>
 
     <div class="hero-content">
-      <div class="hero-label-wrap ">
-        <span class="section-label ">Desarrollo Inmobiliario Premium</span>
+      <div class="hero-label-wrap h-mask">
+        <span class="section-label h-line" data-i18n="hero-label">Desarrollo Inmobiliario Premium</span>
       </div>
       <h1 class="hero-h1" id="hero-heading">
-        <span>
-          <span>Creando</span>
+        <span class="h-mask">
+          <span class="h-line" data-i18n="hero-h1-1">Creando</span>
         </span>
-        <span>
-          <span>Comunidades</span>
+        <span class="h-mask">
+          <span class="h-line" data-i18n="hero-h1-2">Comunidades</span>
         </span>
-        <span>
-          <span>Excepcionales</span>
+        <span class="h-mask">
+          <span class="h-line" data-i18n="hero-h1-3">Excepcionales</span>
         </span>
       </h1>
-      <div class="hero-copy " id="hero-copy">
-        <p>Somos una firma de desarrollo inmobiliario con base en México, impulsada por una visión global y respaldada por la experiencia de nuestros socios en mercados icónicos. Diseñamos y creamos espacios excepcionales que redefinen el concepto de lujo, elevando el estándar de vida a través de proyectos únicos, sofisticados y atemporales.</p>
+      <div class="hero-copy h-fade" id="hero-copy">
+        <p data-i18n="hero-copy">Somos una firma de desarrollo inmobiliario con base en México, impulsada por una visión global y respaldada por la experiencia de nuestros socios en mercados icónicos. Diseñamos y creamos espacios excepcionales que redefinen el concepto de lujo, elevando el estándar de vida a través de proyectos únicos, sofisticados y atemporales.</p>
       </div>
-      <div class="hero-cta ">
-        <a href="/portfolio" class="btn btn-white">Ver Portafolio</a>
-        <a href="/contact" class="btn btn-outline">Contáctanos</a>
+      <div class="hero-cta h-fade">
+        <a href="/portfolio" class="btn btn-white" data-i18n="hero-btn-1">Ver Portafolio</a>
+        <a href="/contact" class="btn btn-outline" data-i18n="hero-btn-2">Contáctanos</a>
       </div>
     </div>
 
     <div class="hero-scroll" aria-hidden="true">
       <div class="hs-line"></div>
-      <span class="hs-label">Scroll</span>
+      <span class="hs-label" data-i18n="hero-scroll">Scroll</span>
     </div>
   </section>
 
@@ -51,18 +51,18 @@ const projects = allProjects.slice(0, 8);
     <div class="container">
       <div class="as-inner">
         <div class="as-label">
-          <span><span class="section-label ">Sobre AMX</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="home-about-label">Sobre AMX</span></span>
         </div>
         <div class="as-body">
           <div class="as-text">
-            <p class="as-p ">
+            <p class="as-p reveal-fade" data-i18n="home-about-p1">
               AMX Developers es una firma de desarrollo inmobiliario con base en México, fundada por socios con amplia experiencia en mercados internacionales como Miami y Nueva York. A lo largo de su trayectoria, el equipo ha participado en el desarrollo de cientos de unidades residenciales y comerciales, aplicando estándares globales y un profundo conocimiento del sector.
             </p>
-            <p class="as-p ">
+            <p class="as-p reveal-fade" data-i18n="home-about-p2">
               La visión de la firma se centra en el desarrollo de proyectos premium y de lujo, con acabados high-end y una ejecución alineada a los más altos estándares internacionales. Cada proyecto es concebido para ofrecer una experiencia superior, combinando diseño, calidad y valor a largo plazo.
             </p>
-            <a href="/about" class="as-link ">
-              <span>Conócenos más</span>
+            <a href="/about" class="as-link reveal-fade">
+              <span data-i18n="home-about-link">Conócenos más</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -77,19 +77,19 @@ const projects = allProjects.slice(0, 8);
 
       <div class="ps-header">
         <div class="psh-left">
-          <span><span class="section-label ">Nuestros Proyectos</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="home-pf-label">Nuestros Proyectos</span></span>
           <h2 class="ps-title">
-            <span><span>Explora nuestro</span></span>
-            <span><span>portafolio</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="home-pf-title-1">Explora nuestro</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="home-pf-title-2">portafolio</span></span>
           </h2>
         </div>
-        <div class="psh-tabs " role="tablist" aria-label="Portfolio categories">
-          <button class="ps-tab active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-          <button class="ps-tab" data-filter="development" role="tab" aria-selected="false">Desarrollo</button>
+        <div class="psh-tabs reveal-fade" role="tablist" aria-label="Portfolio categories">
+          <button class="ps-tab active" data-filter="all" role="tab" aria-selected="true" data-i18n="home-pf-tab-all">Todos</button>
+          <button class="ps-tab" data-filter="development" role="tab" aria-selected="false" data-i18n="home-pf-tab-dev">Desarrollo</button>
         </div>
       </div>
 
-      <div class="ps-grid " id="ps-grid">
+      <div class="ps-grid reveal-stagger" id="ps-grid">
         {projects.map((proj, i) => (
           <article class="ps-card" data-category={proj.category}>
             <a href={`/proyectos/${proj.slug}`} class="psc-link">
@@ -115,15 +115,15 @@ const projects = allProjects.slice(0, 8);
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   {proj.location}
                 </p>
-                <span class="psc-more">Ver proyecto →</span>
+                <span class="psc-more" data-i18n="home-pf-view">Ver proyecto →</span>
               </div>
             </a>
           </article>
         ))}
       </div>
 
-      <div class="ps-footer ">
-        <a href="/portfolio" class="btn btn-outline">Ver Todos los Proyectos</a>
+      <div class="ps-footer reveal-fade">
+        <a href="/portfolio" class="btn btn-outline" data-i18n="home-pf-btn">Ver Todos los Proyectos</a>
       </div>
     </div>
   </section>
@@ -133,28 +133,28 @@ const projects = allProjects.slice(0, 8);
     <div class="container">
       <div class="cs-inner">
         <div class="cs-left">
-          <span><span class="section-label ">Contáctanos</span></span>
+          <span class="reveal-mask"><span class="section-label reveal-line" data-i18n="home-cs-label">Contáctanos</span></span>
           <h2 class="cs-title">
-            <span><span>Construyamos</span></span>
-            <span><span>juntos</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="home-cs-title-1">Construyamos</span></span>
+            <span class="reveal-mask"><span class="reveal-line" data-i18n="home-cs-title-2">juntos</span></span>
           </h2>
         </div>
-        <div class="cs-right ">
+        <div class="cs-right reveal-fade">
           <div class="cs-items">
             <a href="mailto:adm@amxdevelopers.com" class="cs-item">
-              <span class="csi-label">Email</span>
+              <span class="csi-label" data-i18n="home-cs-email-label">Email</span>
               <span class="csi-val">adm@amxdevelopers.com</span>
             </a>
             <a href="https://wa.me/5491133839797" class="cs-item">
-              <span class="csi-label">WhatsApp</span>
+              <span class="csi-label" data-i18n="home-cs-wa-label">WhatsApp</span>
               <span class="csi-val">+54 9 11 3383 9797</span>
             </a>
             <a href="https://www.instagram.com/amxdevelopers" target="_blank" rel="noopener" class="cs-item">
-              <span class="csi-label">Instagram</span>
+              <span class="csi-label" data-i18n="home-cs-ig-label">Instagram</span>
               <span class="csi-val">@amxdevelopers</span>
             </a>
           </div>
-          <a href="/contact" class="btn btn-white" style="margin-top:2rem;">Contáctanos</a>
+          <a href="/contact" class="btn btn-white" style="margin-top:2rem;" data-i18n="home-cs-btn">Contáctanos</a>
         </div>
       </div>
     </div>
@@ -207,6 +207,8 @@ const projects = allProjects.slice(0, 8);
     margin-bottom: 2rem;
     margin-top: 1rem;
   }
+  /* Hero-only reveal helpers (avoids conflict with global .reveal-line handler) */
+  .h-mask { overflow: hidden; display: block; }
   .hero-label-wrap { margin-bottom: 0.5rem; }
   .hero-copy {
     max-width: 520px;
@@ -498,6 +500,24 @@ const projects = allProjects.slice(0, 8);
 
 <script is:inline>
 (function () {
+  // ─── HERO LINE REVEALS (after page intro, delay) ──────────────────────────
+  gsap.fromTo('.hero-h1 .h-line',
+    { y: '110%' },
+    { y: '0%', duration: 1.1, stagger: 0.12, ease: 'power3.out', delay: 1.2 }
+  );
+  gsap.fromTo('.hero-label-wrap .h-line',
+    { y: '110%' },
+    { y: '0%', duration: 0.9, ease: 'power3.out', delay: 1.0 }
+  );
+  gsap.fromTo('.h-fade',
+    { y: 24, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out', delay: 1.5, stagger: 0.2 }
+  );
+  gsap.fromTo('.hero-scroll',
+    { opacity: 0 },
+    { opacity: 1, duration: 0.8, delay: 2.0 }
+  );
+
   // ─── PORTFOLIO FILTER ────────────────────────────────────────────────────
   const tabs = document.querySelectorAll('.ps-tab');
   const cards = document.querySelectorAll('.ps-card');

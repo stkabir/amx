@@ -7,10 +7,10 @@ const { title, description = 'AMX Developers — Desarrollo Inmobiliario Premium
 const pathname = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', key: 'nav-home', label: 'Inicio' },
-  { href: '/about', key: 'nav-about', label: 'Nosotros' },
-  { href: '/portfolio', key: 'nav-portfolio', label: 'Portafolio' },
-  { href: '/contact', key: 'nav-contact', label: 'Contacto' },
+  { href: '/', key: 'nav-home' },
+  { href: '/about', key: 'nav-about' },
+  { href: '/portfolio', key: 'nav-portfolio' },
+  { href: '/contact', key: 'nav-contact' },
 ];
 ---
 
@@ -30,19 +30,35 @@ const navLinks = [
 
 <body>
 
+  <!-- PAGE INTRO (column curtain) -->
+  <div id="page-intro" aria-hidden="true">
+    <div class="pc"></div>
+    <div class="pc"></div>
+    <div class="pc"></div>
+    <div class="pc"></div>
+    <div class="pc"></div>
+  </div>
+
   <!-- HEADER -->
   <header id="site-header">
     <a href="/" class="site-logo" id="site-logo" aria-label="AMX Developers — Home">
       <img src="/img/logo.jpeg" alt="AMX Developers" class="logo-img" />
     </a>
 
-    <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation" aria-expanded="false">
+    <div class="header-right">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Cambiar idioma">
+        <span class="lt-es">ES</span>
+        <span class="lt-sep">/</span>
+        <span class="lt-en">EN</span>
+      </button>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation" aria-expanded="false">
       <div class="menu-icon">
         <span class="ml ml-1"></span>
         <span class="ml ml-2"></span>
         <span class="ml ml-3"></span>
       </div>
     </button>
+    </div>
   </header>
 
   <!-- FULLSCREEN NAV OVERLAY -->
@@ -58,7 +74,7 @@ const navLinks = [
                 href={link.href}
                 class:list={['nsl-link', { 'is-active': pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) }]}
               >
-                <span class="nsl-label">{link.label}</span>
+                <span class="nsl-label" data-i18n={link.key}>{link.key}</span>
               </a>
             </li>
           ))}
@@ -70,7 +86,7 @@ const navLinks = [
         {navLinks.map((link, i) => (
           <div class="nll-item" style={`--i: ${i}`}>
             <a href={link.href} class="nll-link">
-              <span class="nll-text">{link.label}</span>
+              <span class="nll-text" data-i18n={link.key}>{link.key}</span>
               <div class="nll-img" style={`background: ${['linear-gradient(135deg,#001020,#003060)','linear-gradient(135deg,#0a1828,#1e3653)','linear-gradient(135deg,#050c18,#002040)','linear-gradient(135deg,#080f1c,#0d1e35)'][i]}`}></div>
             </a>
           </div>
@@ -101,32 +117,32 @@ const navLinks = [
     <div class="footer-inner">
       <div class="footer-top">
         <div class="ft-col ft-nav">
-          <p class="ft-heading">Navegación</p>
+          <p class="ft-heading" data-i18n="footer-nav-heading">Navegación</p>
           <ul>
-            {navLinks.map(link => <li><a href={link.href}>{link.label}</a></li>)}
+            {navLinks.map(link => <li><a href={link.href} data-i18n={link.key}>{link.key}</a></li>)}
           </ul>
         </div>
 
         <div class="ft-col ft-mailing">
-          <p class="ft-heading">Mantente Informado</p>
-          <p class="ft-sub">Suscríbete para recibir nuestras últimas noticias y desarrollos.</p>
+          <p class="ft-heading" data-i18n="footer-mailing-heading">Mantente Informado</p>
+          <p class="ft-sub" data-i18n="footer-mailing-sub">Suscríbete para recibir nuestras últimas noticias y desarrollos.</p>
           <form class="mailing-form" id="mailing-form">
             <div class="mf-row">
-              <input type="email" name="email" placeholder="Tu correo electrónico" required aria-label="Email" autocomplete="email" />
+              <input type="email" name="email" placeholder="Tu correo electrónico" required aria-label="Email" autocomplete="email" data-i18n-placeholder="footer-email-ph" />
               <button type="submit" aria-label="Subscribe">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </button>
             </div>
-            <p class="mf-success" id="mf-success" aria-live="polite">¡Gracias por suscribirte!</p>
+            <p class="mf-success" id="mf-success" aria-live="polite" data-i18n="footer-mailing-success">¡Gracias por suscribirte!</p>
           </form>
         </div>
 
         <div class="ft-col ft-contact">
-          <p class="ft-heading">Contacto</p>
+          <p class="ft-heading" data-i18n="footer-contact-heading">Contacto</p>
           <address>
-            <p>México</p>
+            <p data-i18n="footer-location">México</p>
             <a href="mailto:adm@amxdevelopers.com">adm@amxdevelopers.com</a>
             <a href="https://wa.me/5491133839797">+54 9 11 3383 9797</a>
           </address>
@@ -134,7 +150,7 @@ const navLinks = [
       </div>
 
       <div class="footer-bottom">
-        <p class="fb-copy">&copy; {new Date().getFullYear()} AMX Developers. <span>Todos los derechos reservados.</span></p>
+        <p class="fb-copy">&copy; {new Date().getFullYear()} AMX Developers. <span data-i18n="footer-rights">Todos los derechos reservados.</span></p>
         <div class="fb-social">
           <a href="https://www.instagram.com/amxdevelopers" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
@@ -154,27 +170,355 @@ const navLinks = [
   </footer>
 
   <!-- CDN SCRIPTS (load before inline scripts) -->
+  <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script is:inline src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
 
   <script is:inline>
   (function () {
+
+    // ─── TRANSLATIONS ─────────────────────────────────────────────────────────
+    // Toggle programmatically: window.amxApplyLang('en') / window.amxApplyLang('es')
+    var T = {
+      es: {
+        'footer-nav-heading': 'Navegación',
+        'nav-home': 'Inicio',
+        'nav-about': 'Nosotros',
+        'nav-portfolio': 'Portafolio',
+        'nav-contact': 'Contacto',
+        'footer-mailing-heading': 'Mantente Informado',
+        'footer-mailing-sub': 'Suscríbete para recibir nuestras últimas noticias y desarrollos.',
+        'footer-email-ph': 'Tu correo electrónico',
+        'footer-mailing-success': '¡Gracias por suscribirte!',
+        'footer-contact-heading': 'Contacto',
+        'footer-location': 'México',
+        'footer-rights': 'Todos los derechos reservados.',
+        'hero-label': 'Desarrollo Inmobiliario Premium',
+        'hero-h1-1': 'Creando',
+        'hero-h1-2': 'Comunidades',
+        'hero-h1-3': 'Excepcionales',
+        'hero-copy': 'Somos una firma de desarrollo inmobiliario con base en México, impulsada por una visión global y respaldada por la experiencia de nuestros socios en mercados icónicos. Diseñamos y creamos espacios excepcionales que redefinen el concepto de lujo, elevando el estándar de vida a través de proyectos únicos, sofisticados y atemporales.',
+        'hero-btn-1': 'Ver Portafolio',
+        'hero-btn-2': 'Contáctanos',
+        'hero-scroll': 'Scroll',
+        'home-about-label': 'Sobre AMX',
+        'home-about-p1': 'AMX Developers es una firma de desarrollo inmobiliario con base en México, fundada por socios con amplia experiencia en mercados internacionales como Miami y Nueva York. A lo largo de su trayectoria, el equipo ha participado en el desarrollo de cientos de unidades residenciales y comerciales, aplicando estándares globales y un profundo conocimiento del sector.',
+        'home-about-p2': 'La visión de la firma se centra en el desarrollo de proyectos premium y de lujo, con acabados high-end y una ejecución alineada a los más altos estándares internacionales. Cada proyecto es concebido para ofrecer una experiencia superior, combinando diseño, calidad y valor a largo plazo.',
+        'home-about-link': 'Conócenos más',
+        'home-pf-label': 'Nuestros Proyectos',
+        'home-pf-title-1': 'Explora nuestro',
+        'home-pf-title-2': 'portafolio',
+        'home-pf-tab-all': 'Todos',
+        'home-pf-tab-dev': 'Desarrollo',
+        'home-pf-tab-asset': 'Gestión de Activos',
+        'home-pf-view': 'Ver proyecto →',
+        'home-pf-btn': 'Ver Todos los Proyectos',
+        'home-cs-label': 'Contáctanos',
+        'home-cs-title-1': 'Construyamos',
+        'home-cs-title-2': 'juntos',
+        'home-cs-email-label': 'Email',
+        'home-cs-wa-label': 'WhatsApp',
+        'home-cs-ig-label': 'Instagram',
+        'home-cs-btn': 'Contáctanos',
+        'about-hero-label': 'Sobre AMX Developers',
+        'about-hero-h1-1': 'Nuestra',
+        'about-hero-h1-2': 'Historia',
+        'about-mission-label': 'Misión',
+        'about-mission-h2-1': 'Construyendo el Futuro.',
+        'about-mission-h2-2': 'Viviendo el Presente.',
+        'about-mission-p1': 'AMX Developers fue fundada con una ambición singular: redefinir lo que significa el desarrollo inmobiliario premium en México y más allá. Creemos que la arquitectura tiene el poder de transformar ciudades, moldear culturas y mejorar la calidad de vida cotidiana.',
+        'about-mission-p2': 'Cada proyecto que emprendemos está guiado por una búsqueda incansable de calidad. Desde el concepto inicial hasta la entrega final, exigimos excelencia en cada etapa — a nuestro equipo, nuestros socios y a nosotros mismos.',
+        'about-mission-p3': 'No somos solo desarrolladores. Somos visionarios urbanos, creando los referentes que las futuras generaciones llamarán hogar.',
+        'about-approach-label': 'Nuestro Enfoque',
+        'about-approach-quote': '"En AMX Developers nos impulsa la visión de redefinir el desarrollo inmobiliario a través de proyectos premium y de lujo. Cada desarrollo representa una oportunidad para innovar, elevar estándares y superar límites, generando valor duradero para nuestros inversionistas y las comunidades que servimos. Con una perspectiva global y un firme compromiso con la excelencia, AMX Developers se dedica a construir un legado distintivo: una comunidad excepcional a la vez."',
+        'about-approach-cite': '— AMX Developers',
+        'about-values-label': 'Valores Fundamentales',
+        'about-values-h2': 'Lo que nos impulsa',
+        'about-v1-title': 'Excelencia',
+        'about-v1-body': 'Cuidamos cada aspecto del proceso. Desde la idea inicial hasta la ejecución final, nos guiamos por los más exigentes estándares de diseño, calidad constructiva y atención al detalle.',
+        'about-v2-title': 'Integridad',
+        'about-v2-body': 'Actuamos con claridad y coherencia en cada relación. Cumplimos lo que prometemos, respetamos los tiempos acordados y sostenemos un compromiso firme con nuestros clientes, socios y las comunidades en las que participamos.',
+        'about-v3-title': 'Visión',
+        'about-v3-body': 'Entendemos la evolución de las comunidades antes de que ocurra y desarrollamos espacios concebidos para perdurar, influyendo en su identidad y crecimiento a lo largo del tiempo.',
+        'about-v4-title': 'Comunidad',
+        'about-v4-body': 'Creamos más que arquitectura: concebimos entornos vivos donde las personas se encuentran, evolucionan y construyen un sentido auténtico de pertenencia.',
+        'about-team-label': 'Nuestro Equipo',
+        'about-team-h2-1': 'El equipo',
+        'about-team-h2-2': 'detrás de AMX',
+        'about-cta-label': 'Explorar',
+        'about-cta-h2-1': 'Descubre lo que',
+        'about-cta-h2-2': 'hemos construido',
+        'about-cta-p': 'Nuestro portafolio abarca torres de lujo, residencias frente al mar, desarrollos de uso mixto y comunidades privadas en México.',
+        'about-cta-btn-1': 'Ver Portafolio',
+        'about-cta-btn-2': 'Contáctanos',
+        'contact-hero-label': 'Contáctanos',
+        'contact-hero-h1': 'Contacto',
+        'contact-section-label': 'Contacto Directo',
+        'contact-h2-1': 'Nos encantaría',
+        'contact-h2-2': 'saber de ti',
+        'contact-desc': 'Si estás interesado en un desarrollo, explorando oportunidades de inversión, o simplemente deseas saber más — nuestro equipo está aquí para ayudarte.',
+        'contact-email-label': 'Email',
+        'contact-wa-label': 'WhatsApp',
+        'contact-ig-label': 'Instagram',
+        'form-name-label': 'Nombre Completo',
+        'form-name-ph': 'Tu nombre completo',
+        'form-email-label': 'Correo Electrónico',
+        'form-email-ph': 'tu@correo.com',
+        'form-phone-label': 'Teléfono / WhatsApp',
+        'form-phone-opt': '(opcional)',
+        'form-phone-ph': '+52 55 ...',
+        'form-topic-label': 'Asunto',
+        'form-topic-default': 'Selecciona un asunto',
+        'form-topic-inv': 'Consulta de Inversión',
+        'form-topic-res': 'Compra Residencial',
+        'form-topic-part': 'Asociación de Negocios',
+        'form-topic-other': 'Otro',
+        'form-msg-label': 'Mensaje',
+        'form-msg-ph': '¿En qué podemos ayudarte?',
+        'form-submit': 'Enviar Mensaje',
+        'form-sending': 'Enviando...',
+        'form-success': 'Mensaje enviado con éxito. Nos pondremos en contacto pronto.',
+        'contact-band-label': 'Ciudad de México, México',
+        'pf-hero-label': 'Nuestro Trabajo',
+        'pf-tab-all': 'Todos',
+        'pf-tab-dev': 'Desarrollo',
+        'pf-tab-asset': 'Asset Management',
+        'pf-cta-label': '¿Interesado?',
+        'pf-cta-h2-1': 'Hablemos',
+        'pf-cta-h2-2': 'de tu proyecto',
+        'pf-cta-btn': 'Contactanos',
+        'pf-view': 'Ver proyecto →',
+      },
+      en: {
+        'footer-nav-heading': 'Navigation',
+        'nav-home': 'Home',
+        'nav-about': 'About',
+        'nav-portfolio': 'Portfolio',
+        'nav-contact': 'Contact',
+        'footer-mailing-heading': 'Stay Updated',
+        'footer-mailing-sub': 'Sign up to receive our latest news and developments.',
+        'footer-email-ph': 'Your email address',
+        'footer-mailing-success': 'Thank you for subscribing!',
+        'footer-contact-heading': 'Contact',
+        'footer-location': 'Mexico',
+        'footer-rights': 'All rights reserved.',
+        'hero-label': 'Premium Real Estate Development',
+        'hero-h1-1': 'Shaping',
+        'hero-h1-2': 'Exceptional',
+        'hero-h1-3': 'Communities',
+        'hero-copy': 'A real estate development firm based in Mexico, founded by partners with extensive experience in international markets such as Miami and New York. We create premium and luxury projects with global standards.',
+        'hero-btn-1': 'Explore Portfolio',
+        'hero-btn-2': 'Get in Touch',
+        'hero-scroll': 'Scroll',
+        'home-about-label': 'About AMX',
+        'home-about-p1': 'AMX Developers is a real estate development firm based in Mexico, founded by partners with extensive experience in international markets such as Miami and New York. Throughout their trajectory, the team has been involved in the development of hundreds of residential and commercial units, applying global standards and a deep understanding of the industry.',
+        'home-about-p2': "The firm's vision is centered on the development of premium and luxury projects, featuring high-end finishes and execution aligned with the highest international standards. Each project is thoughtfully conceived to deliver a superior experience, combining design, quality, and long-term value.",
+        'home-about-link': 'Learn more about us',
+        'home-pf-label': 'Our Work',
+        'home-pf-title-1': 'Explore our',
+        'home-pf-title-2': 'portfolio',
+        'home-pf-tab-all': 'All',
+        'home-pf-tab-dev': 'Development',
+        'home-pf-tab-asset': 'Asset Management',
+        'home-pf-view': 'View project →',
+        'home-pf-btn': 'View All Projects',
+        'home-cs-label': 'Get in Touch',
+        'home-cs-title-1': "Let's build",
+        'home-cs-title-2': 'together',
+        'home-cs-email-label': 'Email',
+        'home-cs-wa-label': 'WhatsApp',
+        'home-cs-ig-label': 'Instagram',
+        'home-cs-btn': 'Contact Us',
+        'about-hero-label': 'About AMX Developers',
+        'about-hero-h1-1': 'Our',
+        'about-hero-h1-2': 'Story',
+        'about-mission-label': 'Mission',
+        'about-mission-h2-1': 'Building the Future.',
+        'about-mission-h2-2': 'Living the Present.',
+        'about-mission-p1': 'AMX Developers was founded with a singular ambition: to redefine what premium real estate development means in Mexico and beyond. We believe that architecture has the power to transform cities, shape culture, and improve the quality of everyday life.',
+        'about-mission-p2': 'Every project we undertake is guided by a relentless pursuit of quality. From the initial concept to final delivery, we demand excellence at every stage — from our team, our partners, and ourselves.',
+        'about-mission-p3': 'We are not just developers. We are urban visionaries, crafting the landmarks that future generations will call home.',
+        'about-approach-label': 'Our Approach',
+        'about-approach-quote': '"At AMX Developers, we are driven by a vision to redefine what it means to develop real estate through premium and luxury projects. Each development is an opportunity to innovate, elevate standards, and push boundaries—creating lasting value for our investors and the communities we serve. With a global perspective and a commitment to excellence, AMX Developers is dedicated to building a distinctive legacy—one exceptional community at a time."',
+        'about-approach-cite': '— AMX Developers',
+        'about-values-label': 'Core Values',
+        'about-values-h2': 'What drives us',
+        'about-v1-title': 'Excellence',
+        'about-v1-body': 'Every detail matters. From the initial concept to the finishing touches, we hold ourselves to the highest standards of architectural quality and craftsmanship.',
+        'about-v2-title': 'Integrity',
+        'about-v2-body': 'Transparent dealing, honest timelines, and a steadfast commitment to every promise we make to our clients, partners, and communities.',
+        'about-v3-title': 'Vision',
+        'about-v3-body': 'We anticipate where communities are heading — and build the spaces that will define them for decades to come.',
+        'about-v4-title': 'Community',
+        'about-v4-body': 'We develop not just buildings, but living ecosystems — places where people connect, grow, and truly belong.',
+        'about-team-label': 'Our Team',
+        'about-team-h2-1': 'The people',
+        'about-team-h2-2': 'behind AMX',
+        'about-cta-label': 'Explore',
+        'about-cta-h2-1': 'See what',
+        'about-cta-h2-2': "we've built",
+        'about-cta-p': 'Our portfolio spans luxury towers, waterfront residences, mixed-use developments, and curated gated communities in Mexico.',
+        'about-cta-btn-1': 'View Portfolio',
+        'about-cta-btn-2': 'Contact Us',
+        'contact-hero-label': 'Reach Out',
+        'contact-hero-h1': 'Contact',
+        'contact-section-label': 'Direct Contact',
+        'contact-h2-1': "We'd love to",
+        'contact-h2-2': 'hear from you',
+        'contact-desc': "Whether you're interested in a development, exploring investment opportunities, or simply want to learn more — our team is here.",
+        'contact-email-label': 'Email',
+        'contact-wa-label': 'WhatsApp',
+        'contact-ig-label': 'Instagram',
+        'form-name-label': 'Full Name',
+        'form-name-ph': 'Your full name',
+        'form-email-label': 'Email Address',
+        'form-email-ph': 'your@email.com',
+        'form-phone-label': 'Phone / WhatsApp',
+        'form-phone-opt': '(optional)',
+        'form-phone-ph': '+52 55 ...',
+        'form-topic-label': 'Topic',
+        'form-topic-default': 'Select a topic',
+        'form-topic-inv': 'Investment Inquiry',
+        'form-topic-res': 'Residential Purchase',
+        'form-topic-part': 'Business Partnership',
+        'form-topic-other': 'Other',
+        'form-msg-label': 'Message',
+        'form-msg-ph': 'How can we help you?',
+        'form-submit': 'Send Message',
+        'form-sending': 'Sending…',
+        'form-success': "Message sent successfully. We'll be in touch soon.",
+        'contact-band-label': 'Mexico City, Mexico',
+        'pf-hero-label': 'Our Work',
+        'pf-tab-all': 'All',
+        'pf-tab-dev': 'Development',
+        'pf-tab-asset': 'Asset Management',
+        'pf-cta-label': 'Interested?',
+        'pf-cta-h2-1': "Let's talk",
+        'pf-cta-h2-2': 'about your project',
+        'pf-cta-btn': 'Contact Us',
+        'pf-view': 'View project →',
+      }
+    };
+
+    var currentLang = localStorage.getItem('amx-lang') || 'es';
+
+    function applyTranslations(lang) {
+      if (!T[lang]) return;
+      currentLang = lang;
+      window.amxLang = lang;
+      document.documentElement.lang = lang;
+      var t = T[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      localStorage.setItem('amx-lang', lang);
+
+      // Trigger language change event for navigation animations
+      window.dispatchEvent(new CustomEvent('amxLangChanged'));
+    }
+
+    // Expose publicly
+    window.amxApplyLang = applyTranslations;
+
+    // Update lang toggle visual state
+    function syncLangToggle(lang) {
+      var btn = document.getElementById('lang-toggle');
+      if (btn) btn.setAttribute('data-lang', lang);
+    }
+
+    // Wire up lang toggle button
+    var langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.addEventListener('click', function() {
+        var next = currentLang === 'es' ? 'en' : 'es';
+        applyTranslations(next);
+        syncLangToggle(next);
+      });
+    }
+
+    // Apply on initial load
+    applyTranslations(currentLang);
+    syncLangToggle(currentLang);
+
+    // ─── REGISTER GSAP PLUGINS ───────────────────────────────────────────────
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ─── PAGE INTRO (column curtain reveal) ──────────────────────────────────
+    var introEl = document.getElementById('page-intro');
+    if (introEl) {
+      gsap.fromTo('.pc',
+        { scaleY: 1, transformOrigin: 'top center' },
+        {
+          scaleY: 0,
+          duration: 1.3,
+          stagger: { each: 0.07, from: 'start' },
+          ease: 'expo.inOut',
+          delay: 0.1,
+          onComplete: function() { introEl.style.display = 'none'; }
+        }
+      );
+    }
+
     // ─── HEADER SCROLL ───────────────────────────────────────────────────────
     var siteHeader = document.getElementById('site-header');
-    window.addEventListener('scroll', function() {
-      siteHeader.classList.toggle('is-scrolled', window.scrollY > 80);
-    }, { passive: true });
+    ScrollTrigger.create({
+      start: 'top -80',
+      onUpdate: function(self) {
+        siteHeader.classList.toggle('is-scrolled', self.scroll() > 80);
+      }
+    });
+
+    // ─── LOGO SCALE ON SCROLL (desktop) ──────────────────────────────────────
+    if (window.innerWidth > 991) {
+      gsap.to('#site-logo', {
+        scrollTrigger: {
+          start: 'top top',
+          end: '40vh top',
+          scrub: 0.6,
+        },
+        scale: 0.72,
+        transformOrigin: 'left center',
+        ease: 'none'
+      });
+    }
 
     // ─── NAV TOGGLE ──────────────────────────────────────────────────────────
-    var menuBtn = document.getElementById('menu-btn');
-    var overlay = document.getElementById('nav-overlay');
+    var menuBtn  = document.getElementById('menu-btn');
+    var overlay  = document.getElementById('nav-overlay');
+    var nslItems = overlay.querySelectorAll('.nsl-item');
+    var nllItems = overlay.querySelectorAll('.nll-item');
+
     var menuOpen = false;
+
+    var openTl = gsap.timeline({ paused: true });
+    openTl
+      .set(overlay, { pointerEvents: 'all' })
+      .fromTo(overlay,
+        { clipPath: 'inset(0 0 100% 0)' },
+        { clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'expo.inOut' }
+      )
+      .fromTo(nslItems,
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.06, duration: 0.5, ease: 'power3.out' },
+        '-=0.45'
+      )
+      .fromTo(nllItems,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.08, duration: 0.6, ease: 'power3.out' },
+        '-=0.5'
+      );
 
     function openMenu() {
       menuOpen = true;
       menuBtn.setAttribute('aria-expanded', 'true');
       menuBtn.classList.add('is-open');
       document.body.classList.add('menu-open');
-      overlay.classList.add('is-open');
+      openTl.play();
     }
 
     function closeMenu() {
@@ -182,7 +526,8 @@ const navLinks = [
       menuBtn.setAttribute('aria-expanded', 'false');
       menuBtn.classList.remove('is-open');
       document.body.classList.remove('menu-open');
-      overlay.classList.remove('is-open');
+      openTl.reverse();
+      setTimeout(function() { overlay.style.pointerEvents = 'none'; }, 900);
     }
 
     menuBtn.addEventListener('click', function() { menuOpen ? closeMenu() : openMenu(); });
@@ -193,6 +538,83 @@ const navLinks = [
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && menuOpen) closeMenu();
+    });
+
+    // ─── LARGE NAV LINK: image hover reveal ──────────────────────────────────
+    nllItems.forEach(function(item) {
+      var img = item.querySelector('.nll-img');
+      item.addEventListener('mouseenter', function() {
+        gsap.fromTo(img,
+          { clipPath: 'inset(100% 0 0 0)' },
+          { clipPath: 'inset(0% 0 0 0)', duration: 0.55, ease: 'power3.out' }
+        );
+      });
+      item.addEventListener('mouseleave', function() {
+        gsap.to(img, { clipPath: 'inset(0 0 100% 0)', duration: 0.45, ease: 'power3.in' });
+      });
+    });
+
+    // ─── SMALL NAV LINK: char slide animation ────────────────────────────────
+    function initNavCharAnimation() {
+      overlay.querySelectorAll('.nsl-link').forEach(function(link) {
+        var label = link.querySelector('.nsl-label');
+        var key = label.getAttribute('data-i18n');
+        var text = T[currentLang][key] || key;
+        label.innerHTML = text.split('').map(function(c) {
+          return '<span class="ch" style="display:inline-block;overflow:hidden;"><span class="chi" style="display:inline-block;">' + (c === ' ' ? '&nbsp;' : c) + '</span></span>';
+        }).join('');
+
+        link.addEventListener('mouseenter', function() {
+          gsap.to(link.querySelectorAll('.chi'), { y: '-105%', stagger: 0.018, duration: 0.28, ease: 'power2.inOut' });
+        });
+        link.addEventListener('mouseleave', function() {
+          gsap.to(link.querySelectorAll('.chi'), { y: '0%', stagger: { each: 0.018, from: 'end' }, duration: 0.28, ease: 'power2.inOut' });
+        });
+      });
+    }
+
+    // Initialize on load
+    initNavCharAnimation();
+
+    // Re-initialize when language changes
+    window.addEventListener('amxLangChanged', initNavCharAnimation);
+
+    // ─── SCROLL REVEAL: lines ────────────────────────────────────────────────
+    gsap.utils.toArray('.reveal-line').forEach(function(el) {
+      gsap.fromTo(el,
+        { y: '105%' },
+        {
+          y: '0%',
+          duration: 1.05,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el.parentElement,
+            start: 'top 88%',
+          }
+        }
+      );
+    });
+
+    // ─── SCROLL REVEAL: fade-up ───────────────────────────────────────────────
+    gsap.utils.toArray('.reveal-fade').forEach(function(el) {
+      gsap.fromTo(el,
+        { y: 30, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.9, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        }
+      );
+    });
+
+    // ─── SCROLL REVEAL: staggered group ──────────────────────────────────────
+    gsap.utils.toArray('.reveal-stagger').forEach(function(group) {
+      gsap.fromTo(Array.from(group.children),
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: 'power2.out',
+          scrollTrigger: { trigger: group, start: 'top 85%' }
+        }
+      );
     });
 
     // ─── MAILING FORM ────────────────────────────────────────────────────────
@@ -211,7 +633,6 @@ const navLinks = [
     }
   })();
   </script>
-
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/5491133839797" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp">
@@ -278,6 +699,20 @@ input, textarea { font: inherit; }
   --nav-h: 70px;
 }
 
+/* ─── PAGE INTRO ─────────────────────────────────────────────────────────── */
+#page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  pointer-events: none;
+}
+.pc {
+  flex: 1;
+  background: var(--dark);
+  transform-origin: top;
+}
+
 /* ─── HEADER ─────────────────────────────────────────────────────────────── */
 #site-header {
   position: fixed;
@@ -303,6 +738,8 @@ input, textarea { font: inherit; }
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  transform-origin: left center;
+  will-change: transform;
 }
 .logo-img {
   height: 52px;
@@ -311,6 +748,39 @@ input, textarea { font: inherit; }
   object-fit: cover;
   border-radius: 8px;
 }
+
+/* HEADER RIGHT */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* LANG TOGGLE */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: opacity 0.2s ease;
+  position: relative;
+  z-index: 1200;
+}
+.lang-toggle:hover { opacity: 0.6; }
+.lt-sep { opacity: 0.35; }
+.lt-es, .lt-en { transition: opacity 0.2s ease; }
+.lang-toggle[data-lang="es"] .lt-es { opacity: 1; }
+.lang-toggle[data-lang="es"] .lt-en { opacity: 0.35; }
+.lang-toggle[data-lang="en"] .lt-en { opacity: 1; }
+.lang-toggle[data-lang="en"] .lt-es { opacity: 0.35; }
 
 /* HAMBURGER */
 .menu-btn {
@@ -348,17 +818,12 @@ input, textarea { font: inherit; }
   z-index: 900;
   background: #F5F2EE;
   clip-path: inset(0 0 100% 0);
-  transition: clip-path 0.6s cubic-bezier(0.87, 0, 0.13, 1);
   pointer-events: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: calc(var(--nav-h) + 2rem) var(--pad) 2.5rem;
   overflow: hidden;
-}
-.nav-overlay.is-open {
-  clip-path: inset(0 0 0% 0);
-  pointer-events: all;
 }
 .nav-overlay-inner {
   display: flex;
@@ -424,12 +889,10 @@ input, textarea { font: inherit; }
   bottom: 0;
   width: 200px;
   clip-path: inset(100% 0 0 0);
-  transition: clip-path 0.55s cubic-bezier(0.33, 1, 0.68, 1);
   pointer-events: none;
   z-index: 1;
   border-radius: 2px;
 }
-.nll-item:hover .nll-img { clip-path: inset(0% 0 0 0); }
 
 /* Overlay bottom bar */
 .nav-overlay-bottom {
@@ -592,6 +1055,9 @@ input, textarea { font: inherit; }
   display: block;
   margin-bottom: 1.25rem;
 }
+/* reveal mask wrapper — must have overflow:hidden */
+.reveal-mask { overflow: hidden; display: block; }
+
 /* inner page header */
 .page-hero {
   padding-top: calc(var(--nav-h) + 5rem);
