@@ -45,7 +45,7 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
             </svg>
             {project.location}
           </span>
-          <span class="proj-status-tag">{project.status}</span>
+          <span class="proj-status-tag" data-i18n={`status-${project.status}`}>{project.status}</span>
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
           <span class="pst-label">Año</span>
         </div>
         <div class="pst-item">
-          <span class="pst-value pst-status">{project.status}</span>
+          <span class="pst-value pst-status" data-i18n={`status-${project.status}`}>{project.status}</span>
           <span class="pst-label">Estado</span>
         </div>
       </div>
@@ -124,7 +124,7 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
                 <dt>Categoría</dt>
                 <dd>{project.category === 'development' ? 'Desarrollo' : 'Asset Management'}</dd>
               </div>
-              <div class="psb-row"><dt>Estado</dt><dd>{project.status}</dd></div>
+              <div class="psb-row"><dt data-i18n="sidebar-status-label">Estado</dt><dd data-i18n={`status-${project.status}`}>{project.status}</dd></div>
               {project.year && <div class="psb-row"><dt>Año</dt><dd>{project.year}</dd></div>}
               {project.floors && <div class="psb-row"><dt>Pisos</dt><dd>{project.floors}</dd></div>}
               {project.units && <div class="psb-row"><dt>Unidades</dt><dd>{project.units}</dd></div>}
@@ -164,7 +164,7 @@ const related = projects.filter(p => p.slug !== project.slug).slice(0, 2);
             <div class="pmgc-visual">
               <img src={rel.image} alt={rel.name} loading="lazy" />
               <div class="pmgc-overlay"></div>
-              <span class="pmgc-status">{rel.status}</span>
+              <span class="pmgc-status" data-i18n={`status-${rel.status}`}>{rel.status}</span>
             </div>
             <div class="pmgc-info">
               <p class="pmgc-type">{rel.type}</p>

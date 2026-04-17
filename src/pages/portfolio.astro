@@ -38,7 +38,7 @@ import { projects } from '../data/projects.js';
                 loading={i === 0 ? 'eager' : 'lazy'}
               />
               <div class="pffc-overlay"></div>
-              <span class="pffc-status">{proj.status}</span>
+              <span class="pffc-status" data-i18n={`status-${proj.status}`}>{proj.status}</span>
               <div class="pffc-arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -69,7 +69,7 @@ import { projects } from '../data/projects.js';
             <div class="pfgc-visual">
               <img src={proj.image} alt={proj.name} class="pfgc-img" loading="lazy" />
               <div class="pfgc-overlay"></div>
-              <span class="pfgc-status">{proj.status}</span>
+              <span class="pfgc-status" data-i18n={`status-${proj.status}`}>{proj.status}</span>
               <div class="pfgc-arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
